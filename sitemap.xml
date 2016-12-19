@@ -2,6 +2,27 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/about/index.html</loc>
+    
+    <lastmod>2016-12-19T08:30:53.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowgan.com/2016/12/01/CSS%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%AE%9E%E8%B7%B5/</loc>
+    
+    <lastmod>2016-12-19T07:48:37.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowgan.com/2016/12/02/Javascript%E6%95%B0%E7%BB%84%E7%AC%94%E8%AE%B0/</loc>
+    
+    <lastmod>2016-12-19T07:22:32.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/categories/index.html</loc>
     
     <lastmod>2016-12-17T16:04:16.000Z</lastmod>
@@ -9,16 +30,16 @@
   </url>
   
   <url>
-    <loc>http://snowgan.com/2016/12/02/Javascript%E6%95%B0%E7%BB%84%E7%AC%94%E8%AE%B0/</loc>
+    <loc>http://snowgan.com/2015/06/25/Swift-KVO%E6%A8%A1%E5%BC%8F/</loc>
     
-    <lastmod>2016-12-17T15:41:38.000Z</lastmod>
+    <lastmod>2015-06-25T15:34:54.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://snowgan.com/2016/12/01/CSS%E6%A8%A1%E7%B3%8A%E6%95%88%E6%9E%9C%E5%AE%9E%E8%B7%B5/</loc>
+    <loc>http://snowgan.com/2015/06/25/Swift%E7%AC%94%E8%AE%B0%EF%BC%88%E4%B8%80%EF%BC%89-%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/</loc>
     
-    <lastmod>2016-12-17T15:41:33.000Z</lastmod>
+    <lastmod>2015-06-25T09:27:07.000Z</lastmod>
     
   </url>
   
