@@ -172,7 +172,7 @@
     <link href="http://snowgan.com/2016/11/21/JavaScript%E5%9F%BA%E6%9C%AC%E7%B1%BB%E5%9E%8B/"/>
     <id>http://snowgan.com/2016/11/21/JavaScript基本类型/</id>
     <published>2016-11-21T14:25:13.000Z</published>
-    <updated>2016-12-20T15:04:34.000Z</updated>
+    <updated>2016-12-21T07:13:34.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="1-变量和常量"><a href="#1-变量和常量" class="headerlink" title="1. 变量和常量"></a>1. 变量和常量</h3><p>JavaScript中的数据存储类型分为变量和常量（常量是es6新引入的），常量在声明初始化后就不能改变其值，变量则可任意改变。代码中尽可能使用常量以避免意外改变了值，除非业务逻辑明确需要一个变量</p>
 <p>变量声明关键字： <strong>var</strong>, <strong>let(es6块级作用域申明)</strong></p>
@@ -258,6 +258,25 @@
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> name = <span class="string">'Snow'</span>;</div><div class="line"><span class="keyword">var</span> welcome = <span class="string">`Hello <span class="subst">$&#123;name&#125;</span>`</span>;</div></pre></td></tr></table></figure>
 <p>字符串常用方法：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> s = <span class="string">'Hello World'</span></div><div class="line">s.length            <span class="comment">// =&gt; "11" : 字符长度</span></div><div class="line">s.charAt(<span class="number">0</span>)         <span class="comment">// =&gt; "H" : 第一个字符</span></div><div class="line">s.indexOf(<span class="string">'l'</span>)      <span class="comment">// =&gt; "2" : 字符l首次出现的索引位置</span></div><div class="line">s.indexOf(<span class="string">'l'</span>, <span class="number">5</span>)   <span class="comment">// =&gt; "9" : 字符l在索引位置5及之后首次出现的位置</span></div><div class="line">s.lastIndexOf(<span class="string">'l'</span>)  <span class="comment">// =&gt; "9" : 字符l最后一次出现的位置</span></div><div class="line">s.split(<span class="string">' '</span>)        <span class="comment">// =&gt; ["Hello", "World"] : 按传入的分隔符分割成数组</span></div><div class="line">s.replace(<span class="string">'l'</span>, <span class="string">'L'</span>) <span class="comment">// =&gt; "HeLlo World" : 字符替换</span></div><div class="line">s.toUpperCase()     <span class="comment">// =&gt; "HELLO WORLD" : 全文转换为大写</span></div><div class="line">s.toLowerCase()     <span class="comment">// =&gt; "hello world" : 全文转换为小写</span></div><div class="line">s.substr(<span class="number">1</span>, <span class="number">4</span>)      <span class="comment">// =&gt; "ello" : 从索引位置1开始，截取4个字符</span></div><div class="line">s.substr(<span class="number">-4</span>)        <span class="comment">// =&gt; "orld" : 从索引位置length-4开始截取，第一个参数可为负，第二个参数若为负则转成0</span></div><div class="line">s.substring(<span class="number">1</span>, <span class="number">4</span>)   <span class="comment">// =&gt; "ell" : 取指定索引位置之间的字符，&gt;=1且&lt;4</span></div><div class="line">s.substring(<span class="number">1</span>, <span class="number">-4</span>)  <span class="comment">// =&gt; "H" : 把所有参数转成0</span></div><div class="line">s.slice(<span class="number">1</span>, <span class="number">4</span>)       <span class="comment">// =&gt; "ell" : 取指定索引位置之间的字符，&gt;=1且&lt;4</span></div><div class="line">s.slice(<span class="number">1</span>, <span class="number">-4</span>)      <span class="comment">// =&gt; "ello W" : &gt;=1且&lt;length-4，所有参数均可为负</span></div><div class="line"></div><div class="line"><span class="comment">// 在不支持trim方法的情况下，可自行写一个trim函数：</span></div><div class="line"><span class="built_in">String</span>.prototype.trim = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="keyword">this</span>.replace(<span class="regexp">/^\s+|\s+$/g</span>, <span class="string">""</span>);&#125;;</div></pre></td></tr></table></figure>
+<h4 id="2-3-类型转换"><a href="#2-3-类型转换" class="headerlink" title="2.3 类型转换"></a>2.3 类型转换</h4><p><strong>string转number</strong></p>
+<ul>
+<li>调用Number对象构造器，能转换数字则返回对应数字，不能则返回NaN</li>
+<li>调用内置函数<code>parseInt(string,[ radix ])</code>或<code>parseFloat(string,[ radix ])</code>，radix指定解析进制规则，默认10</li>
+<li>使用’*’运算符会默认将字符串转换为数字，若不能转换则运算结果为NaN</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> a = <span class="number">30</span> * <span class="string">'3'</span>;  <span class="comment">// 90</span></div><div class="line">a = <span class="string">'30'</span> * <span class="string">'3'</span>;    <span class="comment">// 90</span></div><div class="line">a = <span class="number">30</span> * <span class="string">'a'</span>;    <span class="comment">// NaN</span></div></pre></td></tr></table></figure>
+<p><strong>number转string</strong></p>
+<ul>
+<li>调用对象的<code>toString()</code>方法，JS的所有对象都会有一个toString方法</li>
+<li>使用’+’连接数字和字符串时，会默认将数字转换为字符串</li>
+</ul>
+<p><strong>转boolean</strong></p>
+<ul>
+<li>调用Boolean对象构造器</li>
+<li>使用’!!’逻辑运算符</li>
+</ul>
+<p>JS中的任何值都能转换为布尔值。undefined、null、0、-0、NaN、“”(空字符串)会转换为false，其余则转换为true。</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> b = <span class="string">''</span>;</div><div class="line"><span class="keyword">const</span> boo1 = <span class="built_in">Boolean</span>(b);  <span class="comment">// false</span></div><div class="line"><span class="keyword">const</span> boo2 = !!b;         <span class="comment">// false</span></div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
