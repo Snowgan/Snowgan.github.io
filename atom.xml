@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2016-12-19T07:22:32.000Z</updated>
+  <updated>2017-01-03T16:37:35.000Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>JavaScript函数笔记</title>
+    <link href="http://snowgan.com/2016/12/05/JavaScript%E5%87%BD%E6%95%B0%E7%AC%94%E8%AE%B0/"/>
+    <id>http://snowgan.com/2016/12/05/JavaScript函数笔记/</id>
+    <published>2016-12-04T16:32:58.000Z</published>
+    <updated>2017-01-03T16:37:35.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>和其他编程语言类似，JavaScript的函数也是用{}包裹的一个代码块，通过函数调用执行其方法体，能够进行值传参，并具有返回值，当没有显式声明返回值是，函数返回undefined。</p>
+<h3 id="5-1-函数是第一类对象"><a href="#5-1-函数是第一类对象" class="headerlink" title="5.1 函数是第一类对象"></a>5.1 函数是第一类对象</h3><p>JS中的函数是一种对象类型，即是说可以当作对象来使用函数，相比其他对象类型，函数多了能被调用执行的功能。</p>
+<a id="more"></a>
+<p>函数和其他对象的使用对比：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 赋值声明</span></div><div class="line"><span class="keyword">var</span> obj = &#123;&#125;;</div><div class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 可添加属性</span></div><div class="line">obj.name = <span class="string">'Test'</span>;</div><div class="line">func.name = <span class="string">'Test'</span>;</div><div class="line"></div><div class="line"><span class="comment">// 作为数组元素或对象属性值</span></div><div class="line"><span class="keyword">var</span> testArr = [];</div><div class="line">testArr.push(&#123;&#125;);</div><div class="line">testArr.push(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</div><div class="line"></div><div class="line"><span class="keyword">var</span> testObj = &#123;&#125;;</div><div class="line">testObj.item1 = &#123;&#125;;</div><div class="line">testObj.item2 = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 作为函数参数</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunc1</span>(<span class="params">arg</span>) </span>&#123;&#125;;</div><div class="line">testFunc1(&#123;&#125;);</div><div class="line">testFunc1(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 作为函数返回值</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunc2</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &#123;&#125;</div><div class="line">&#125;;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">testFunc3</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<h3 id="5-2-函数参数"><a href="#5-2-函数参数" class="headerlink" title="5.2 函数参数"></a>5.2 函数参数</h3><p>JS中的函数参数都是传值参数，即函数调用时传入的参数都是原数据值的一个拷贝</p>
+<p>当传入的数据是<strong>原生</strong>类型，则在函数内部对参数的任何修改都不会影响函数外的原数据</p>
+<p>当传入的数据是<strong>对象</strong>类型，由于拷贝的是一个引用，则在函数内部对应的参数指向的是同一个对象，通过参数对该对象的任何修改会同时影响函数外的原数据</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">obj_argu</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(obj_argu.name)    <span class="comment">// Snow</span></div><div class="line">  obj_argu.name = <span class="string">'Rain'</span>;</div><div class="line">  <span class="built_in">console</span>.log(obj_argu.name)    <span class="comment">// Rain</span></div><div class="line">  obj_argu = &#123;<span class="attr">name</span>: <span class="string">'Wind'</span>&#125;;</div><div class="line">  <span class="built_in">console</span>.log(obj_argu.name)    <span class="comment">// Wind</span></div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> Obj = &#123;<span class="attr">name</span>: <span class="string">'Snow'</span>&#125;;</div><div class="line">func(Obj);</div><div class="line"><span class="built_in">console</span>.log(Obj.name)    <span class="comment">// Rain</span></div></pre></td></tr></table></figure>
+<p><img src="/image/JavaScript函数笔记/001.png" alt="Function1"></p>
+<p><strong>参数默认值</strong></p>
+<p>若不给参数传值，则参数的默认值为<code>undefined</code></p>
+<p>ES6中可以指定默认值，直接在函数声明参数时赋值<code>function func(a, b = 1) {}</code></p>
+<p><strong>参数解构</strong></p>
+<p>ES6新特性，可以使用对象解构或数组解构的形式来实现参数解构</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 对象解构</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">&#123;a, b&#125;</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span> and <span class="subst">$&#123;b&#125;</span>`</span>);  <span class="comment">// You and me</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">func(&#123;<span class="attr">a</span>: <span class="string">'You'</span>, <span class="attr">b</span>: <span class="string">'me'</span>&#125;);</div><div class="line"></div><div class="line"><span class="comment">// 数组解构</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">[a, b]</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;a&#125;</span> and <span class="subst">$&#123;b&#125;</span>`</span>);  <span class="comment">// You and me</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">func([<span class="string">'You'</span>, <span class="string">'me'</span>]);</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;和其他编程语言类似，JavaScript的函数也是用{}包裹的一个代码块，通过函数调用执行其方法体，能够进行值传参，并具有返回值，当没有显式声明返回值是，函数返回undefined。&lt;/p&gt;
+&lt;h3 id=&quot;5-1-函数是第一类对象&quot;&gt;&lt;a href=&quot;#5-1-函数是第一类对象&quot; class=&quot;headerlink&quot; title=&quot;5.1 函数是第一类对象&quot;&gt;&lt;/a&gt;5.1 函数是第一类对象&lt;/h3&gt;&lt;p&gt;JS中的函数是一种对象类型，即是说可以当作对象来使用函数，相比其他对象类型，函数多了能被调用执行的功能。&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="Javascript" scheme="http://snowgan.com/categories/Front-End/Javascript/"/>
+    
+    
+      <category term="Javascript" scheme="http://snowgan.com/tags/Javascript/"/>
+    
+      <category term="Function" scheme="http://snowgan.com/tags/Function/"/>
+    
+  </entry>
   
   <entry>
     <title>Javascript数组笔记</title>
