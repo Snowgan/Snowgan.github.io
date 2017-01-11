@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2017-01-09T07:40:20.000Z</updated>
+  <updated>2017-01-11T16:38:02.000Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -16,11 +16,83 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>Javascript中的this笔记</title>
+    <link href="http://snowgan.com/2016/12/08/Javascript%E4%B8%AD%E7%9A%84this%E7%AC%94%E8%AE%B0/"/>
+    <id>http://snowgan.com/2016/12/08/Javascript中的this笔记/</id>
+    <published>2016-12-07T16:35:21.000Z</published>
+    <updated>2017-01-11T16:38:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-全局作用域下的this"><a href="#1-全局作用域下的this" class="headerlink" title="1. 全局作用域下的this"></a>1. 全局作用域下的this</h2><p>全局作用域下this的值由其js执行的宿主环境（浏览器、nodejs等）决定</p>
+<p>在web浏览器中运行时，this与window对象等价，即<code>this === window</code></p>
+<h2 id="2-函数作用域下的this"><a href="#2-函数作用域下的this" class="headerlink" title="2. 函数作用域下的this"></a>2. 函数作用域下的this</h2><p>函数作用域下this的值由其函数被调用的方式决定</p>
+<p>函数调用方式有四种：</p>
+<ol>
+<li>作为对象方法被调用；</li>
+<li>作为对象构造器，使用关键字new的形式被调用；</li>
+<li>使用Function.prototype.apply()或Function.prototype.call()方法显式绑定this值</li>
+<li>不属于以上任何一种，则作为普通函数被调用；</li>
+</ol>
+<a id="more"></a>
+<h3 id="2-1-对象方法调用"><a href="#2-1-对象方法调用" class="headerlink" title="2.1 对象方法调用"></a>2.1 对象方法调用</h3><p>当对象的某一属性是一个函数，且通过该对象属性名调用函数时则视为对象方法调用，函数执行时的this指向<strong>对象本身</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">printName</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.name);</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Mike'</span>,</div><div class="line">  <span class="attr">func</span>: printName</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> obj2 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Jenny'</span>,</div><div class="line">  <span class="attr">func</span>: printName</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="keyword">var</span> parent = &#123;</div><div class="line">  <span class="attr">child</span>: &#123;</div><div class="line">    <span class="attr">name</span>: <span class="string">'Anna'</span>,</div><div class="line">    <span class="attr">func</span>: printName</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line">obj1.func(); <span class="comment">// 'Mike'  函数执行时的this === obj1</span></div><div class="line">obj2.func(); <span class="comment">// 'Jenny'  函数执行时的this === obj2</span></div><div class="line">parent.child.func(); <span class="comment">// 'Anna'  函数执行时的this === parent.child</span></div></pre></td></tr></table></figure>
+<h3 id="2-2-对象构造器调用"><a href="#2-2-对象构造器调用" class="headerlink" title="2.2 对象构造器调用"></a>2.2 对象构造器调用</h3><p>在函数调用表达式前加上关键字new就完成了构造器调用<code>new Func()</code>，这个函数也被称作构造器，和其他面向对象语言类似，构造器主要用于构造一个实例对象，并完成一些初始化工作</p>
+<p>构造器就是一个普通的函数，也可以直接跟()进行正常调用，当加上new之后，JS引擎的执行流程会发生变化，具体如下：</p>
+<ol>
+<li>新建一个空对象，其原型指向构造器的prototype属性</li>
+<li>将this指向这个空对象</li>
+<li>执行函数体</li>
+<li>返回这个创建的对象，作为构造器调用的返回值</li>
+</ol>
+<p>所以在对象构造器调用方式下，this指向的是<strong>该构造器所创建的实例对象</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通常作为构造器的函数名首字母大写(代码规范)</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.name = <span class="string">'Lee'</span>;</div><div class="line">  <span class="keyword">this</span>.func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">this</span>;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">new</span> Person();  <span class="comment">// 得到一个Person对象&#123; name: 'Lee', func: Function &#125;</span></div><div class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();  <span class="comment">// p1.func() === p1;</span></div><div class="line"><span class="keyword">var</span> p2 = <span class="keyword">new</span> Person();  <span class="comment">// p2.func() === p2;</span></div></pre></td></tr></table></figure>
+<p>当构造器的函数体显式指定了返回值时，分两种情况：</p>
+<ul>
+<li>返回类型不是对象，构造器调用会忽略这条语句，返回创建的实例对象</li>
+<li>返回类型是对象，构造器调用会执行这条语句，返回语句指定的对象</li>
+</ul>
+<h3 id="2-3-apply-amp-call-显式绑定"><a href="#2-3-apply-amp-call-显式绑定" class="headerlink" title="2.3 apply()&amp;call()显式绑定"></a>2.3 apply()&amp;call()显式绑定</h3><p>函数对象是Function构造器的一个实例，所以继承其原型上的方法，其中apply()和call()可以指定this和arguments的值</p>
+<p><code>func.apply(thisVal[, argsArray])</code></p>
+<p><code>func.call(thisVal[, args1, args2, ...])</code></p>
+<p>两个方法的功能完全一样，区别在于apply传入由参数组成的数组或类数组对象，而call传入参数列表</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Mike'</span>,</div><div class="line">  <span class="attr">func</span>: <span class="function"><span class="keyword">function</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">', '</span> + age);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj1.func(<span class="number">20</span>); <span class="comment">// 'Mike, 20'</span></div><div class="line">obj1.func.apply(&#123;<span class="attr">name</span>: <span class="string">'Jenny'</span>&#125;, [<span class="number">18</span>]); <span class="comment">// 'Jenny, 18'</span></div><div class="line">obj1.func.call(&#123;<span class="attr">name</span>: <span class="string">'Anna'</span>&#125;, <span class="number">10</span>); <span class="comment">// 'Anna, 10'</span></div></pre></td></tr></table></figure>
+<h3 id="2-4-普通函数调用"><a href="#2-4-普通函数调用" class="headerlink" title="2.4 普通函数调用"></a>2.4 普通函数调用</h3><p>普通函数调用的表现形式主要有以下几种：</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过函数名调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">func();</div><div class="line"></div><div class="line"><span class="comment">// 通过指向一个函数对象的变量名来调用</span></div><div class="line"><span class="keyword">var</span> funcVar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">funcVar();</div><div class="line"></div><div class="line"><span class="comment">// IIFE调用</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;)();</div></pre></td></tr></table></figure>
+<p>在非严格模式下this指向全局作用域下的this</p>
+<p>在严格模式下this为undefined</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-全局作用域下的this&quot;&gt;&lt;a href=&quot;#1-全局作用域下的this&quot; class=&quot;headerlink&quot; title=&quot;1. 全局作用域下的this&quot;&gt;&lt;/a&gt;1. 全局作用域下的this&lt;/h2&gt;&lt;p&gt;全局作用域下this的值由其js执行的宿主环境（浏览器、nodejs等）决定&lt;/p&gt;
+&lt;p&gt;在web浏览器中运行时，this与window对象等价，即&lt;code&gt;this === window&lt;/code&gt;&lt;/p&gt;
+&lt;h2 id=&quot;2-函数作用域下的this&quot;&gt;&lt;a href=&quot;#2-函数作用域下的this&quot; class=&quot;headerlink&quot; title=&quot;2. 函数作用域下的this&quot;&gt;&lt;/a&gt;2. 函数作用域下的this&lt;/h2&gt;&lt;p&gt;函数作用域下this的值由其函数被调用的方式决定&lt;/p&gt;
+&lt;p&gt;函数调用方式有四种：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;作为对象方法被调用；&lt;/li&gt;
+&lt;li&gt;作为对象构造器，使用关键字new的形式被调用；&lt;/li&gt;
+&lt;li&gt;使用Function.prototype.apply()或Function.prototype.call()方法显式绑定this值&lt;/li&gt;
+&lt;li&gt;不属于以上任何一种，则作为普通函数被调用；&lt;/li&gt;
+&lt;/ol&gt;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="Javascript" scheme="http://snowgan.com/categories/Front-End/Javascript/"/>
+    
+    
+      <category term="Javascript" scheme="http://snowgan.com/tags/Javascript/"/>
+    
+      <category term="this" scheme="http://snowgan.com/tags/this/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript函数笔记</title>
     <link href="http://snowgan.com/2016/12/05/JavaScript%E5%87%BD%E6%95%B0%E7%AC%94%E8%AE%B0/"/>
     <id>http://snowgan.com/2016/12/05/JavaScript函数笔记/</id>
     <published>2016-12-04T16:32:58.000Z</published>
-    <updated>2017-01-09T07:40:20.000Z</updated>
+    <updated>2017-01-11T13:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<p>和其他编程语言类似，JavaScript的函数也是用{}包裹的一个代码块，通过函数调用执行其方法体，能够进行值传参，并具有返回值，当没有显式声明返回值时，函数返回undefined。</p>
 <h3 id="1-函数是第一类对象"><a href="#1-函数是第一类对象" class="headerlink" title="1. 函数是第一类对象"></a>1. 函数是第一类对象</h3><p>JS中的函数是一种对象类型，即是说可以当作对象来使用函数，相比其他对象类型，函数多了能被调用执行的功能。</p>
@@ -60,8 +132,10 @@
 <p>具有length属性，可使用数组索引访问方式访问参数元素，但不能在其上调用其他数组方法，因为arguments是一个类数组结构，而不是真正的数组。</p>
 <p>在非严格模式下，arguments中的参数元素是其对应形参变量的别名，改变任何一个都将会影响另一个</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length); <span class="comment">// 3</span></div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>] === a);  <span class="comment">// true</span></div><div class="line">  </div><div class="line">  <span class="built_in">arguments</span>[<span class="number">0</span>] = <span class="string">'Byebye'</span>;</div><div class="line">  <span class="built_in">console</span>.log(a); <span class="comment">// 'Byebye'</span></div><div class="line">  </div><div class="line">  a = <span class="string">'Welcome'</span>;</div><div class="line">  <span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]); <span class="comment">// 'Welcome'</span></div><div class="line">&#125;</div><div class="line"></div><div class="line">func(<span class="string">'Hello'</span>, <span class="string">'World'</span>, <span class="string">'!'</span>);</div></pre></td></tr></table></figure>
-<h3 id="5-箭头函数（ES6）"><a href="#5-箭头函数（ES6）" class="headerlink" title="5. 箭头函数（ES6）"></a>5. 箭头函数（ES6）</h3><p>是传统函数声明的简写形式，但不会绑定this，arguments，this继承它被创建时的上下文this</p>
-<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 语法</span></div><div class="line">(param1, param2, …, paramN) =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 等于: (param1, param2, …, paramN) =&gt; &#123; return expression; &#125;</span></div><div class="line">(param1, param2, …, paramN) =&gt; expression</div><div class="line"></div><div class="line"><span class="comment">// 只有一个参数时括号可省略</span></div><div class="line">(singleParam) =&gt; &#123; statements &#125;</div><div class="line">singleParam =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 无参时使用空括号</span></div><div class="line">() =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 返回对象字面量时用括号括起来</span></div><div class="line">params =&gt; (&#123;<span class="attr">foo</span>: bar&#125;)</div><div class="line"></div><div class="line"><span class="comment">// ...rest表示其与参数</span></div><div class="line">(param1, param2, ...rest) =&gt; &#123; statements &#125;</div><div class="line">(param1 = defaultValue1, param2, …, paramN = defaultValueN) =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 可使用参数解构</span></div><div class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">[a, b] = [<span class="number">1</span>, <span class="number">2</span>], &#123;x: c&#125; = &#123;x: a + b&#125;</span>) =&gt;</span> a + b + c;</div><div class="line">f();  <span class="comment">// 6</span></div></pre></td></tr></table></figure>]]></content>
+<h3 id="5-箭头函数（ES6）"><a href="#5-箭头函数（ES6）" class="headerlink" title="5. 箭头函数（ES6）"></a>5. 箭头函数（ES6）</h3><p>是传统函数声明的简写形式，但不会绑定this，arguments，this继承它被创建时所在作用域的this，所以常用于创建回调函数</p>
+<p>声明语法：<code>(param1, param2, …, paramN) =&gt; { statements }</code></p>
+<p>其他声明规则：<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 当函数体只有一个返回语句时，可省略&#123;&#125;</span></div><div class="line"><span class="comment">// 等于: (param1, param2, …, paramN) =&gt; &#123; return expression; &#125;</span></div><div class="line">(param1, param2, …, paramN) =&gt; expression</div><div class="line"></div><div class="line"><span class="comment">// 只有一个参数时括号可省略</span></div><div class="line"><span class="comment">// 等于: (singleParam) =&gt; &#123; statements &#125;</span></div><div class="line">singleParam =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 无参时使用空括号</span></div><div class="line">() =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 返回对象字面量时用括号括起来</span></div><div class="line">params =&gt; (&#123;<span class="attr">foo</span>: bar&#125;)</div><div class="line"></div><div class="line"><span class="comment">// ...rest表示其与参数</span></div><div class="line">(param1, param2, ...rest) =&gt; &#123; statements &#125;</div><div class="line"><span class="comment">// 可指定参数默认值</span></div><div class="line">(param1 = defaultValue1, param2, …, paramN = defaultValueN) =&gt; &#123; statements &#125;</div><div class="line"></div><div class="line"><span class="comment">// 可使用参数解构</span></div><div class="line"><span class="keyword">var</span> f = <span class="function">(<span class="params">[a, b] = [<span class="number">1</span>, <span class="number">2</span>], &#123;x: c&#125; = &#123;x: a + b&#125;</span>) =&gt;</span> a + b + c;</div><div class="line">f();  <span class="comment">// 6</span></div></pre></td></tr></table></figure></p>
+]]></content>
     
     <summary type="html">
     
