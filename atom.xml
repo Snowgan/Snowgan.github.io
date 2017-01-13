@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2017-01-11T16:45:51.000Z</updated>
+  <updated>2017-01-13T02:28:26.000Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://snowgan.com/2016/12/08/JavaScript%E4%B8%AD%E7%9A%84this%E7%AC%94%E8%AE%B0/"/>
     <id>http://snowgan.com/2016/12/08/JavaScript中的this笔记/</id>
     <published>2016-12-07T16:35:21.000Z</published>
-    <updated>2017-01-11T16:45:51.000Z</updated>
+    <updated>2017-01-13T02:28:26.000Z</updated>
     
     <content type="html"><![CDATA[<h2 id="1-全局作用域下的this"><a href="#1-全局作用域下的this" class="headerlink" title="1. 全局作用域下的this"></a>1. 全局作用域下的this</h2><p>全局作用域下this的值由其js执行的宿主环境（浏览器、nodejs等）决定</p>
 <p>在web浏览器中运行时，this与window对象等价，即<code>this === window</code></p>
@@ -50,15 +50,21 @@
 <li>返回类型不是对象，构造器调用会忽略这条语句，返回创建的实例对象</li>
 <li>返回类型是对象，构造器调用会执行这条语句，返回语句指定的对象</li>
 </ul>
-<h3 id="2-3-apply-amp-call-显式绑定"><a href="#2-3-apply-amp-call-显式绑定" class="headerlink" title="2.3 apply()&amp;call()显式绑定"></a>2.3 apply()&amp;call()显式绑定</h3><p>函数对象是Function构造器的一个实例，所以继承其原型上的方法，其中apply()和call()可以指定this和arguments的值</p>
+<h3 id="2-3-显式绑定"><a href="#2-3-显式绑定" class="headerlink" title="2.3 显式绑定"></a>2.3 显式绑定</h3><p>函数对象是Function构造器的一个实例，所以继承其原型上的方法，其中apply()和call()可以指定this和arguments的值</p>
 <p><code>func.apply(thisVal[, argsArray])</code></p>
 <p><code>func.call(thisVal[, args1, args2, ...])</code></p>
 <p>两个方法的功能完全一样，区别在于apply传入由参数组成的数组或类数组对象，而call传入参数列表</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Mike'</span>,</div><div class="line">  <span class="attr">func</span>: <span class="function"><span class="keyword">function</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">', '</span> + age);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line">obj1.func(<span class="number">20</span>); <span class="comment">// 'Mike, 20'</span></div><div class="line">obj1.func.apply(&#123;<span class="attr">name</span>: <span class="string">'Jenny'</span>&#125;, [<span class="number">18</span>]); <span class="comment">// 'Jenny, 18'</span></div><div class="line">obj1.func.call(&#123;<span class="attr">name</span>: <span class="string">'Anna'</span>&#125;, <span class="number">10</span>); <span class="comment">// 'Anna, 10'</span></div></pre></td></tr></table></figure>
+<p>另外还有一个方法bind()，将返回一个新函数，新函数的this始终指向传入的第一个参数，无论其以何种方式被调用。除此之外，函数体执行逻辑和原函数一样</p>
+<p><code>func.bind(thisVal[, args1, args2, ...])</code></p>
+<p>传入bind的参数列表和传入新函数的参数会依次组成新函数的arguments变量</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> obj1 = &#123;</div><div class="line">  <span class="attr">name</span>: <span class="string">'Mike'</span>,</div><div class="line">  <span class="attr">func</span>: <span class="function"><span class="keyword">function</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.name + <span class="string">', '</span> + age);</div><div class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="keyword">var</span> newFunc = obj1.func.bind(&#123;<span class="attr">name</span>: <span class="string">'Rose'</span>&#125;, <span class="number">50</span>);</div><div class="line">newFunc(<span class="number">25</span>); <span class="comment">// 'Rose, 50'  [50， 25]</span></div></pre></td></tr></table></figure>
 <h3 id="2-4-普通函数调用"><a href="#2-4-普通函数调用" class="headerlink" title="2.4 普通函数调用"></a>2.4 普通函数调用</h3><p>普通函数调用的表现形式主要有以下几种：</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 通过函数名调用</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>) </span>&#123;&#125;</div><div class="line">func();</div><div class="line"></div><div class="line"><span class="comment">// 通过指向一个函数对象的变量名来调用</span></div><div class="line"><span class="keyword">var</span> funcVar = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;;</div><div class="line">funcVar();</div><div class="line"></div><div class="line"><span class="comment">// IIFE调用</span></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;&#125;)();</div></pre></td></tr></table></figure>
-<p>在非严格模式下this指向全局作用域下的this</p>
-<p>在严格模式下this为undefined</p>
+<p>在非严格模式下this指向<strong>全局作用域下的this</strong></p>
+<p>在严格模式下this为<strong>undefined</strong></p>
+<h3 id="2-5-箭头函数的this（ES6）"><a href="#2-5-箭头函数的this（ES6）" class="headerlink" title="2.5 箭头函数的this（ES6）"></a>2.5 箭头函数的this（ES6）</h3><p>箭头函数是ES6新引进的语法，它的this指向被创建时所在作用域的this值，这一特点在回调函数中特别有用</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>Click<span class="tag">&lt;/<span class="name">button</span>&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="javascript"></span></div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">btnClick</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> ele = <span class="built_in">document</span>.getElementById(<span class="string">'btn'</span>);</div><div class="line">  <span class="comment">// 事件函数的this指向的是被绑定的DOM元素本身</span></div><div class="line">  ele.addEventListener(<span class="string">'click'</span>, btnClick);  </div><div class="line">  </div><div class="line">  <span class="comment">// 箭头函数的this指向被创建时所在作用域的this</span></div><div class="line">  <span class="comment">// 此时箭头函数是定义在全局作用域里的，this指向window对象</span></div><div class="line">  ele.addEventListener(<span class="string">'click'</span>, () =&gt; &#123;<span class="built_in">console</span>.log(<span class="keyword">this</span>)&#125;); </div><div class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></div></pre></td></tr></table></figure>
 ]]></content>
     
     <summary type="html">
