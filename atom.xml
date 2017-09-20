@@ -98,7 +98,7 @@
     <link href="http://snowgan.com/2016/12/05/JavaScript%E5%87%BD%E6%95%B0%E7%AC%94%E8%AE%B0/"/>
     <id>http://snowgan.com/2016/12/05/JavaScript函数笔记/</id>
     <published>2016-12-04T16:32:58.000Z</published>
-    <updated>2017-01-11T16:45:42.000Z</updated>
+    <updated>2017-09-20T15:13:59.000Z</updated>
     
     <content type="html"><![CDATA[<p>和其他编程语言类似，JavaScript的函数也是用{}包裹的一个代码块，通过函数调用执行其方法体，能够进行值传参，并具有返回值，当没有显式声明返回值时，函数返回undefined。</p>
 <h3 id="1-函数是第一类对象"><a href="#1-函数是第一类对象" class="headerlink" title="1. 函数是第一类对象"></a>1. 函数是第一类对象</h3><p>JS中的函数是一种对象类型，即是说可以当作对象来使用函数，相比其他对象类型，函数多了能被调用执行的功能。</p>
@@ -132,7 +132,7 @@
 <h3 id="4-this和arguments"><a href="#4-this和arguments" class="headerlink" title="4. this和arguments"></a>4. this和arguments</h3><p>在调用函数时，一般会隐式传入两个对象：this和arguments</p>
 <p><strong>this</strong></p>
 <p>也被称作<strong>函数上下文</strong>，其值由函数被调用的方式决定。</p>
-<p>this的情况复杂多变，其详解将单独成篇《<a href="/2016/12/08/JavaScript中的this笔记/">JavaScript中的this笔记</a>》</p>
+<p>this的情况复杂多变，其详解将单独成篇《<a href="/2016/12/09/JavaScript中的this笔记/">JavaScript中的this笔记</a>》</p>
 <p><strong>arguments</strong></p>
 <p>用于保存所有传入函数的参数，即使没有对应的形参。</p>
 <p>具有length属性，可使用数组索引访问方式访问参数元素，但不能在其上调用其他数组方法，因为arguments是一个类数组结构，而不是真正的数组。</p>
