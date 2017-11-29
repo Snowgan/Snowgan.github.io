@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2017-08-20T13:31:51.000Z</updated>
+  <updated>2017-11-29T14:45:49.000Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,85 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Loop in JS</title>
+    <link href="http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/"/>
+    <id>http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/</id>
+    <published>2017-01-11T12:01:00.000Z</published>
+    <updated>2017-11-29T14:45:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><h4 id="object-prototype-and-prototype-chain"><a href="#object-prototype-and-prototype-chain" class="headerlink" title="object prototype and prototype chain"></a>object prototype and prototype chain</h4><p>Every object in Javascript has a prototype. And the prototype also is an object.</p>
+<p>So we can get a prototype chain and the end of the chain links to <strong>Object.prototype</strong> whose prototype is null.</p>
+<p>When trying to access a property of an object, will firstly find in object self. If cannot find it, will look up its prototype, and so on until find the property or the end of the prototype chain is reached.</p>
+<h4 id="Constructor-and-Instance"><a href="#Constructor-and-Instance" class="headerlink" title="Constructor and Instance"></a>Constructor and Instance</h4><p>But what is “Object.prototype”? It’s quite different from the object prototype we mentioned above.</p>
+<p>Object is a constructor. In Javascript, constructor is a normal function which is called with keyword ‘new’. Like below:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</div></pre></td></tr></table></figure></p>
+<p>The function <strong>Foo</strong> is a constructor. It can be used to create and initialize an object.</p>
+<p>The variable <strong>foo</strong> is an instance object of the constructor Foo.</p>
+<p>Every function in Javascript has a property named ‘prototype’. And this property ia an object.</p>
+<p>So when the function is called as a constructor, the function property ‘prototype’ will be assigned as the prototype of the instance created by the constructor</p>
+<h4 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h4><p>The prototype can be accessed by ‘__proto__‘ property, but it’s not a standard property and depends on browsers’ implement.</p>
+<p>Examples:</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Equal to: var obj = new Object(&#123; a: 'a' &#125;)</span></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="string">'a'</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.__proto__ === <span class="built_in">Object</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.constructor === <span class="built_in">Object</span>);  <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="comment">// Equal to: var obj = new Array(1, 2)</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="built_in">console</span>.log(arr.__proto__ === <span class="built_in">Array</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.prototype.__proto__ === <span class="built_in">Object</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.prototype.constructor === <span class="built_in">Array</span>);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
+<p><img src="/image/Prototype&Inheritance/001.png" width="450" alt="object_prototype" title="object_prototype"></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Living</span>(<span class="params">age</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.alive = <span class="literal">true</span>;</div><div class="line">  <span class="keyword">this</span>.age = age;</div><div class="line">&#125;</div><div class="line">Living.prototype.growup = <span class="function"><span class="keyword">function</span>(<span class="params">time</span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.age += time;</div><div class="line">&#125;;</div><div class="line"><span class="keyword">const</span> foo = <span class="keyword">new</span> Living(<span class="number">2</span>);</div></pre></td></tr></table></figure>
+<p><img src="/image/Prototype&Inheritance/002.png" width="450" alt="object_prototype2" title="object_prototype2"></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;Prototype&quot;&gt;&lt;a href=&quot;#Prototype&quot; class=&quot;headerlink&quot; title=&quot;Prototype&quot;&gt;&lt;/a&gt;Prototype&lt;/h3&gt;&lt;h4 id=&quot;object-prototype-and-prototype-chain&quot;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="JavaScript" scheme="http://snowgan.com/categories/Front-End/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://snowgan.com/tags/JavaScript/"/>
+    
+      <category term="Advanced" scheme="http://snowgan.com/tags/Advanced/"/>
+    
+      <category term="Prototype" scheme="http://snowgan.com/tags/Prototype/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Loop in JS</title>
+    <link href="http://snowgan.com/2017/01/05/Loop%20in%20JS/"/>
+    <id>http://snowgan.com/2017/01/05/Loop in JS/</id>
+    <published>2017-01-05T06:30:00.000Z</published>
+    <updated>2017-11-29T14:35:08.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="For-loop"><a href="#For-loop" class="headerlink" title="For loop"></a>For loop</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; Things.length; i++) &#123;</div><div class="line">  Things[i]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>The performance may be slow as the length property of Things will be accessed on each loop iteration.</p>
+<p>A better way is to cache the length at initial phase, so we just access the length property once during the whole loop.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0.</span> len = Things.length; i &lt; len; i++) &#123;</div><div class="line">  Things[i]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>further micro-optimization:</p>
+<p>cut the extra variable but reverse loop order<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">for</span> (<span class="keyword">let</span> i = Things.length; i--;) &#123;</div><div class="line">  Things[i]</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="For-In-loop"><a href="#For-In-loop" class="headerlink" title="For-In loop"></a>For-In loop</h3><p>To iterates over enumerable properties of an object. Also include those enumerable properties on prototype chain.</p>
+<p>This should not be used to iterate over an Array since the iterating order is not guaranteed.</p>
+<p>The method <strong>hasOwnProperty()</strong> of Object can filter the properties on prototype chain.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.fooProp = <span class="string">'foo\'s property'</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">this</span>.barProp = <span class="string">'bar\'s property'</span>;</div><div class="line">&#125;</div><div class="line">bar.prototype = <span class="keyword">new</span> foo();</div><div class="line"><span class="keyword">var</span> inst = <span class="keyword">new</span> bar();</div><div class="line"><span class="keyword">for</span> (<span class="keyword">const</span> prop <span class="keyword">in</span> inst) &#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;prop&#125;</span>: <span class="subst">$&#123;inst[prop]&#125;</span>`</span>);</div><div class="line">&#125;</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'=======Use hasOwnProperty()======='</span>);</div><div class="line"><span class="keyword">for</span> (<span class="keyword">const</span> prop <span class="keyword">in</span> inst) &#123;</div><div class="line">  <span class="keyword">if</span> (inst.hasOwnProperty(prop)) &#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">`<span class="subst">$&#123;prop&#125;</span>: <span class="subst">$&#123;inst[prop]&#125;</span>`</span>);</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"></div><div class="line"><span class="comment">// Console result</span></div><div class="line"><span class="comment">// barProp: bar's property</span></div><div class="line"><span class="comment">// fooProp: foo's property</span></div><div class="line"><span class="comment">// =======Use hasOwnProperty()=======</span></div><div class="line"><span class="comment">// barProp: bar's property</span></div></pre></td></tr></table></figure></p>
+<p>We can also directly call the hasOwnProperty on Object by <code>Object.prototype.hasOwnProperty.call(obj, prop)</code></p>
+<p>This way will be better in case the hasOwnProperty method has been redefined</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;For-loop&quot;&gt;&lt;a href=&quot;#For-loop&quot; class=&quot;headerlink&quot; title=&quot;For loop&quot;&gt;&lt;/a&gt;For loop&lt;/h3&gt;&lt;figure class=&quot;highlight js&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="JavaScript" scheme="http://snowgan.com/categories/Front-End/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://snowgan.com/tags/JavaScript/"/>
+    
+      <category term="Grammer" scheme="http://snowgan.com/tags/Grammer/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript中的this笔记</title>
