@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-01-15T17:33:16.777Z</updated>
+  <updated>2018-01-15T17:34:52.516Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -16,11 +16,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Loop in JS</title>
+    <title>Webpack Learning</title>
     <link href="http://snowgan.com/2017/01/16/Webpack%20Learning/"/>
     <id>http://snowgan.com/2017/01/16/Webpack Learning/</id>
     <published>2017-01-16T15:31:00.000Z</published>
-    <updated>2018-01-15T17:33:16.777Z</updated>
+    <updated>2018-01-15T17:34:52.516Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Why-use-webpack"><a href="#Why-use-webpack" class="headerlink" title="Why use webpack"></a>Why use webpack</h2><p>Why?</p>
 <p>It’s the most popular build tool for javascript(According stars on github).</p>
