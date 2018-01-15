@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2017-11-29T15:01:26.000Z</updated>
+  <updated>2018-01-15T17:33:16.777Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -16,11 +16,72 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>Prototype&amp;Inheritance</title>
+    <title>Loop in JS</title>
+    <link href="http://snowgan.com/2017/01/16/Webpack%20Learning/"/>
+    <id>http://snowgan.com/2017/01/16/Webpack Learning/</id>
+    <published>2017-01-16T15:31:00.000Z</published>
+    <updated>2018-01-15T17:33:16.777Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="Why-use-webpack"><a href="#Why-use-webpack" class="headerlink" title="Why use webpack"></a>Why use webpack</h2><p>Why?</p>
+<p>It’s the most popular build tool for javascript(According stars on github).</p>
+<ul>
+<li>Even though its configuration is too complex if we want a flexible build environment.</li>
+<li>Even though it will bundle lots of wrapper code in final js file so it’s more overhead if our project is very simple.</li>
+<li>Not to mention that there are many plugins to learn</li>
+</ul>
+<p>OK, that’s my hard points during my webpack trip.</p>
+<p>But…</p>
+<a id="more"></a>
+<p>I think Webpack is a great module bundler that bundle all of your javascripts, css, images and fonts into one or more static files according to their dependency net.</p>
+<h2 id="How-to-use-webpack"><a href="#How-to-use-webpack" class="headerlink" title="How to use webpack"></a>How to use webpack</h2><p>Webpack worked via a configuration object. It’s a js file named webpack.config.js by default.<br>Please refer to office ducuments for details : )</p>
+<h3 id="Level-0"><a href="#Level-0" class="headerlink" title="Level 0"></a>Level 0</h3><p>Basicly we need to defined an entry file from which webpack start work.</p>
+<p>Also an output destination to store generated bundle files.<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="comment">// entry: String | Array | Object</span></div><div class="line">  entry: <span class="string">'./src/main.js'</span>,</div><div class="line">  output: &#123;</div><div class="line">    path: <span class="string">'./dist'</span>,</div><div class="line">    filename: <span class="string">'build.js'</span>,</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Webpack will start from main.js in src folder, and create dist folder after work to place the bundle file named build.js</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>Tips</strong></p>
+<p>We can use Node’s path module to avoid relative path issue.</p>
+<p><em>entry: path.resolve(__dirname, ‘./src/main.js’)</em></p>
+</blockquote>
+<p><strong>Multiple entries</strong></p>
+<p>When we use object value to define the entry, we can define multiple entries by use more than one property. The property key can be used by the variable ‘<strong>[name]</strong>‘<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  entry: &#123;</div><div class="line">    home: path.resolve(__dirname, <span class="string">'./src/home.js'</span>),</div><div class="line">    <span class="string">'about-me'</span>: path.resolve(__dirname, <span class="string">'./src/about.js'</span>),</div><div class="line">    <span class="comment">// path string will generate relative path in target folder</span></div><div class="line">    <span class="string">'sub/child'</span>: path.resolve(__dirname, <span class="string">'./src/child.js'</span>),</div><div class="line">  &#125;,</div><div class="line">  output: &#123;</div><div class="line">    path: <span class="string">'./dist'</span>,</div><div class="line">    filename: <span class="string">'[name].js'</span>,</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"><span class="comment">// The bundled structure:</span></div><div class="line"><span class="comment">// |- dist</span></div><div class="line"><span class="comment">// |- - home.js</span></div><div class="line"><span class="comment">// |- - about-me.js</span></div><div class="line"><span class="comment">// |- - sub</span></div><div class="line"><span class="comment">// |- - - child.js</span></div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>Tips</strong></p>
+<p>String type entry also equal to object type entry with one property and the property key is main.</p>
+<p>entry: path.resolve(__dirname, ‘./src/main.js’)</p>
+<p>entry: {  main: path.resolve(__dirname, ‘./src/main.js’)  }</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;Why-use-webpack&quot;&gt;&lt;a href=&quot;#Why-use-webpack&quot; class=&quot;headerlink&quot; title=&quot;Why use webpack&quot;&gt;&lt;/a&gt;Why use webpack&lt;/h2&gt;&lt;p&gt;Why?&lt;/p&gt;
+&lt;p&gt;It’s the most popular build tool for javascript(According stars on github).&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Even though its configuration is too complex if we want a flexible build environment.&lt;/li&gt;
+&lt;li&gt;Even though it will bundle lots of wrapper code in final js file so it’s more overhead if our project is very simple.&lt;/li&gt;
+&lt;li&gt;Not to mention that there are many plugins to learn&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OK, that’s my hard points during my webpack trip.&lt;/p&gt;
+&lt;p&gt;But…&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="Webpack" scheme="http://snowgan.com/categories/Front-End/Webpack/"/>
+    
+    
+      <category term="Webpack" scheme="http://snowgan.com/tags/Webpack/"/>
+    
+      <category term="Tool" scheme="http://snowgan.com/tags/Tool/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Prototype &amp; Inheritance</title>
     <link href="http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/"/>
     <id>http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/</id>
     <published>2017-01-11T12:01:00.000Z</published>
-    <updated>2017-11-29T15:01:26.000Z</updated>
+    <updated>2017-11-29T15:10:01.000Z</updated>
     
     <content type="html"><![CDATA[<h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><h4 id="object-prototype-and-prototype-chain"><a href="#object-prototype-and-prototype-chain" class="headerlink" title="object prototype and prototype chain"></a>object prototype and prototype chain</h4><p>Every object in Javascript has a prototype. And the prototype also is an object.</p>
 <p>So we can get a prototype chain and the end of the chain links to <strong>Object.prototype</strong> whose prototype is null.</p>

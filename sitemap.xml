@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/2017/01/16/Webpack%20Learning/</loc>
+    
+    <lastmod>2018-01-15T17:33:16.777Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/2017/01/11/Prototype&Inheritance/</loc>
     
-    <lastmod>2017-11-29T15:01:26.000Z</lastmod>
+    <lastmod>2017-11-29T15:10:01.000Z</lastmod>
     
   </url>
   
