@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-01-17T15:52:59.031Z</updated>
+  <updated>2018-01-17T15:59:28.957Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Webpack Learning</title>
-    <link href="http://snowgan.com/2017/01/16/Webpack%20Learning/"/>
-    <id>http://snowgan.com/2017/01/16/Webpack Learning/</id>
-    <published>2017-01-16T15:31:00.000Z</published>
-    <updated>2018-01-17T15:52:59.031Z</updated>
+    <link href="http://snowgan.com/2017/01/26/Webpack%20Learning/"/>
+    <id>http://snowgan.com/2017/01/26/Webpack Learning/</id>
+    <published>2017-01-26T15:31:00.000Z</published>
+    <updated>2018-01-17T15:59:28.957Z</updated>
     
     <content type="html"><![CDATA[<h2 id="Why-use-webpack"><a href="#Why-use-webpack" class="headerlink" title="Why use webpack"></a>Why use webpack</h2><p>Why?</p>
 <p>It’s the most popular build tool for javascript(According stars on github).</p>
@@ -54,6 +54,8 @@
 <p>If we write ES6 syntax that browsers cannot support currently, we need to use babel to transform them to ES5 syntax;</p>
 <p>If we want to import css, image, font files like a normal js file, we also need a transformation to do it;</p>
 <p>If we use sass, we need to compile it;<br>…</p>
+<p>We can do all of these things using <strong>loaders</strong>.</p>
+<p>First you need to install the loaders you want.</p>
 ]]></content>
     
     <summary type="html">
