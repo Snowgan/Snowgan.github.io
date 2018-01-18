@@ -58,7 +58,7 @@
 <p>reduce在数组只有一个元素且没有定义initialValue时，将不会执行指定函数，直接返回该元素</p>
 <p>reduce在数组为空且定义initialValue时，将不会执行指定函数，直接返回initialValue</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> flattened = [[<span class="number">0</span>, <span class="number">1</span>], [<span class="number">2</span>, <span class="number">3</span>], [<span class="number">4</span>, <span class="number">5</span>]].reduce(<span class="function"><span class="keyword">function</span>(<span class="params">a, b</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> a.concat(b);</div><div class="line">&#125;, []);</div><div class="line"><span class="comment">// flattened is [0, 1, 2, 3, 4, 5]</span></div></pre></td></tr></table></figure>
-</div></article></div></section><footer><div class="paginator"><a href="/2016/12/05/JavaScript函数笔记/" class="prev"><<上一篇: JavaScript函数笔记</a><a href="/2016/12/01/CSS模糊效果实践/" class="next">下一篇: CSS模糊效果实践>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+</div></article></div></section><footer><div class="paginator"><a href="/2016/12/05/JavaScript函数笔记/" class="prev">&lt;&lt;上一篇: JavaScript函数笔记</a><a href="/2016/12/01/CSS模糊效果实践/" class="next">下一篇: CSS模糊效果实践>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2016/12/02/JavaScript数组笔记/';
     this.page.identifier = '2016/12/02/JavaScript数组笔记/';
 };
