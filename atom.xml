@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-01-25T15:10:09.536Z</updated>
+  <updated>2018-01-25T15:37:55.725Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://snowgan.com/2017/02/10/JavaScript%20Events/"/>
     <id>http://snowgan.com/2017/02/10/JavaScript Events/</id>
     <published>2017-02-10T14:05:00.000Z</published>
-    <updated>2018-01-25T15:10:09.536Z</updated>
+    <updated>2018-01-25T15:37:55.725Z</updated>
     
     <content type="html"><![CDATA[<p>Events plays the core role in Javascript to allow user to interact with the web application.</p>
 <p>The basic work flow is:</p>
@@ -89,6 +89,12 @@
 </tbody>
 </table>
 <h4 id="2-2-1-mouseenter-amp-mouseleave-mouseover-amp-mouseout"><a href="#2-2-1-mouseenter-amp-mouseleave-mouseover-amp-mouseout" class="headerlink" title="2.2.1. mouseenter &amp; mouseleave, mouseover &amp; mouseout"></a>2.2.1. mouseenter &amp; mouseleave, mouseover &amp; mouseout</h4><p>mouseover and mouseout will also be fired when event occurred on children element, whereas mouseenter and mouseleave will not.</p>
+<p><img src="/image/JavaScriptEvents/001.png" width="450" alt="mouse event"></p>
+<p>We register the both four events on the outer element.</p>
+<p>When mouse move from 1 to 2, <code>mouseover</code> and <code>mouseenter</code> will be fired;</p>
+<p>When mouse move from 2 to 3, <code>mouseover</code> and <code>mouseout</code> will be fired(mouseover inner element, mouseout outer element);</p>
+<p>When mouse move from 3 to 2, <code>mouseover</code> and <code>mouseout</code> will be fired(mouseover outer element, mouseout inner element);</p>
+<p>When mouse move from 2 to 1, <code>mouseleave</code> and <code>mouseout</code> will be fired</p>
 ]]></content>
     
     <summary type="html">
