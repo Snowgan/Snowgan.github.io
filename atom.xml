@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-01-25T15:43:55.509Z</updated>
+  <updated>2018-01-26T13:05:22.987Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,28 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Flexbox Table</title>
+    <link href="http://snowgan.com/2017/03/01/Flexbox%20Table/"/>
+    <id>http://snowgan.com/2017/03/01/Flexbox Table/</id>
+    <published>2017-02-28T16:20:34.000Z</published>
+    <updated>2018-01-26T13:05:22.987Z</updated>
+    
+    <summary type="html">
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="CSS" scheme="http://snowgan.com/categories/Front-End/CSS/"/>
+    
+    
+      <category term="CSS" scheme="http://snowgan.com/tags/CSS/"/>
+    
+      <category term="flex" scheme="http://snowgan.com/tags/flex/"/>
+    
+  </entry>
   
   <entry>
     <title>JavaScript Events</title>
