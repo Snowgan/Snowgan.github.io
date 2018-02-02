@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/2017/01/26/Webpack%20Learning/</loc>
+    
+    <lastmod>2018-02-02T14:12:14.907Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/2017/03/07/Flexbox%20Table/</loc>
     
     <lastmod>2018-01-28T14:46:25.278Z</lastmod>
@@ -19,13 +26,6 @@
     <loc>http://snowgan.com/2017/02/10/JavaScript%20Events/</loc>
     
     <lastmod>2018-01-25T15:43:55.509Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowgan.com/2017/01/26/Webpack%20Learning/</loc>
-    
-    <lastmod>2018-01-24T15:50:54.647Z</lastmod>
     
   </url>
   
