@@ -340,22 +340,22 @@
   </entry>
   
   <entry>
-    <title>Prototype &amp; Inheritance</title>
-    <link href="http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/"/>
-    <id>http://snowgan.com/2017/01/11/Prototype&amp;Inheritance/</id>
+    <title>Prototype in JS</title>
+    <link href="http://snowgan.com/2017/01/11/Prototype/"/>
+    <id>http://snowgan.com/2017/01/11/Prototype/</id>
     <published>2017-01-11T12:01:00.000Z</published>
-    <updated>2017-11-29T15:10:01.000Z</updated>
+    <updated>2018-05-16T15:51:20.243Z</updated>
     
-    <content type="html"><![CDATA[<h3 id="Prototype"><a href="#Prototype" class="headerlink" title="Prototype"></a>Prototype</h3><h4 id="object-prototype-and-prototype-chain"><a href="#object-prototype-and-prototype-chain" class="headerlink" title="object prototype and prototype chain"></a>object prototype and prototype chain</h4><p>Every object in Javascript has a prototype. And the prototype also is an object.</p>
+    <content type="html"><![CDATA[<h3 id="object-prototype-and-prototype-chain"><a href="#object-prototype-and-prototype-chain" class="headerlink" title="object prototype and prototype chain"></a>object prototype and prototype chain</h3><p>Every object in Javascript has a prototype. And the prototype also is an object.</p>
 <p>So we can get a prototype chain and the end of the chain links to <strong>Object.prototype</strong> whose prototype is null.</p>
 <p>When trying to access a property of an object, will firstly find in object self. If cannot find it, will look up its prototype, and so on until find the property or the end of the prototype chain is reached.<br><a id="more"></a></p>
-<h4 id="Constructor-and-Instance"><a href="#Constructor-and-Instance" class="headerlink" title="Constructor and Instance"></a>Constructor and Instance</h4><p>But what is “Object.prototype”? It’s quite different from the object prototype we mentioned above.</p>
+<h3 id="Constructor-and-Instance"><a href="#Constructor-and-Instance" class="headerlink" title="Constructor and Instance"></a>Constructor and Instance</h3><p>But what is “Object.prototype”? It’s quite different from the object prototype we mentioned above.</p>
 <p>Object is a constructor. In Javascript, constructor is a normal function which is called with keyword ‘new’. Like below:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = <span class="keyword">new</span> Foo();</div></pre></td></tr></table></figure></p>
 <p>The function <strong>Foo</strong> is a constructor. It can be used to create and initialize an object.</p>
 <p>The variable <strong>foo</strong> is an instance object of the constructor Foo.</p>
 <p>Every function in Javascript has a property named ‘prototype’. And this property ia an object.</p>
 <p>So when the function is called as a constructor, the function property ‘prototype’ will be assigned as the prototype of the instance created by the constructor</p>
-<h4 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h4><p>The prototype can be accessed by ‘__proto__‘ property, but it’s not a standard property and depends on browsers’ implement.</p>
+<h3 id="proto"><a href="#proto" class="headerlink" title="__proto__"></a>__proto__</h3><p>The prototype can be accessed by ‘__proto__‘ property, but it’s not a standard property and depends on browsers’ implement.</p>
 <p>Examples:</p>
 <figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// Equal to: var obj = new Object(&#123; a: 'a' &#125;)</span></div><div class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="string">'a'</span> &#125;;</div><div class="line"><span class="built_in">console</span>.log(obj.__proto__ === <span class="built_in">Object</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Object</span>.prototype.constructor === <span class="built_in">Object</span>);  <span class="comment">// true</span></div><div class="line"></div><div class="line"><span class="comment">// Equal to: var obj = new Array(1, 2)</span></div><div class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>, <span class="number">2</span>];</div><div class="line"><span class="built_in">console</span>.log(arr.__proto__ === <span class="built_in">Array</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.prototype.__proto__ === <span class="built_in">Object</span>.prototype);  <span class="comment">// true</span></div><div class="line"><span class="built_in">console</span>.log(<span class="built_in">Array</span>.prototype.constructor === <span class="built_in">Array</span>);  <span class="comment">// true</span></div></pre></td></tr></table></figure>
 <p><img src="/image/Prototype&Inheritance/001.png" width="450" alt="object_prototype" title="object_prototype"></p>
@@ -365,7 +365,7 @@
     
     <summary type="html">
     
-      &lt;h3 id=&quot;Prototype&quot;&gt;&lt;a href=&quot;#Prototype&quot; class=&quot;headerlink&quot; title=&quot;Prototype&quot;&gt;&lt;/a&gt;Prototype&lt;/h3&gt;&lt;h4 id=&quot;object-prototype-and-prototype-chain&quot;&gt;&lt;a href=&quot;#object-prototype-and-prototype-chain&quot; class=&quot;headerlink&quot; title=&quot;object prototype and prototype chain&quot;&gt;&lt;/a&gt;object prototype and prototype chain&lt;/h4&gt;&lt;p&gt;Every object in Javascript has a prototype. And the prototype also is an object.&lt;/p&gt;
+      &lt;h3 id=&quot;object-prototype-and-prototype-chain&quot;&gt;&lt;a href=&quot;#object-prototype-and-prototype-chain&quot; class=&quot;headerlink&quot; title=&quot;object prototype and prototype chain&quot;&gt;&lt;/a&gt;object prototype and prototype chain&lt;/h3&gt;&lt;p&gt;Every object in Javascript has a prototype. And the prototype also is an object.&lt;/p&gt;
 &lt;p&gt;So we can get a prototype chain and the end of the chain links to &lt;strong&gt;Object.prototype&lt;/strong&gt; whose prototype is null.&lt;/p&gt;
 &lt;p&gt;When trying to access a property of an object, will firstly find in object self. If cannot find it, will look up its prototype, and so on until find the property or the end of the prototype chain is reached.&lt;br&gt;
     

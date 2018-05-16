@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/2017/01/11/Prototype/</loc>
+    
+    <lastmod>2018-05-16T15:51:20.243Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/2018/01/10/Install%20MongoDB%20on%20Debian%209/</loc>
     
     <lastmod>2018-05-15T14:36:02.202Z</lastmod>
@@ -33,13 +40,6 @@
     <loc>http://snowgan.com/2017/02/10/JavaScript%20Events/</loc>
     
     <lastmod>2018-01-25T15:43:55.509Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://snowgan.com/2017/01/11/Prototype&Inheritance/</loc>
-    
-    <lastmod>2017-11-29T15:10:01.000Z</lastmod>
     
   </url>
   
