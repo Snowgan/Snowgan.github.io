@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/2017/06/21/How%20dose%20the%20Execution%20Context%20work%20in%20JS/</loc>
+    
+    <lastmod>2018-05-17T15:51:57.259Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/2017/01/11/Prototype/</loc>
     
     <lastmod>2018-05-16T15:51:20.243Z</lastmod>

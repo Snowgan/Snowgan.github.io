@@ -52,6 +52,50 @@
   </entry>
   
   <entry>
+    <title>How dose the Execution Context work in JS</title>
+    <link href="http://snowgan.com/2017/06/21/How%20dose%20the%20Execution%20Context%20work%20in%20JS/"/>
+    <id>http://snowgan.com/2017/06/21/How dose the Execution Context work in JS/</id>
+    <published>2017-06-21T14:10:00.000Z</published>
+    <updated>2018-05-17T15:51:57.259Z</updated>
+    
+    <content type="html"><![CDATA[<p>The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in.</p>
+<p>There can be numbers of EC in our program, and we can create a new EC by below three ways:</p>
+<ol>
+<li><strong>Global EC</strong>: Will create a global EC at the begin of running application, and only one global EC in the whole program;</li>
+<li><strong>Function EC</strong>: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.</li>
+<li><strong>eval()</strong>: Using eval function also will create a EC, but it’s better to not use eval.</li>
+</ol>
+<p>And a call stack will help to manage those ECs. The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in. </p>
+<a id="more"></a>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in.&lt;/p&gt;
+&lt;p&gt;There can be numbers of EC in our program, and we can create a new EC by below three ways:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;Global EC&lt;/strong&gt;: Will create a global EC at the begin of running application, and only one global EC in the whole program;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Function EC&lt;/strong&gt;: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;eval()&lt;/strong&gt;: Using eval function also will create a EC, but it’s better to not use eval.&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;And a call stack will help to manage those ECs. The bottom of the stack will always be the &lt;strong&gt;global EC&lt;/strong&gt;, and the top is a &lt;strong&gt;function EC&lt;/strong&gt; that current code is being executed in. &lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="JavaScript" scheme="http://snowgan.com/categories/Front-End/JavaScript/"/>
+    
+    
+      <category term="JavaScript" scheme="http://snowgan.com/tags/JavaScript/"/>
+    
+      <category term="Advanced" scheme="http://snowgan.com/tags/Advanced/"/>
+    
+      <category term="Execution Context" scheme="http://snowgan.com/tags/Execution-Context/"/>
+    
+  </entry>
+  
+  <entry>
     <title>Flexbox Table</title>
     <link href="http://snowgan.com/2017/03/07/Flexbox%20Table/"/>
     <id>http://snowgan.com/2017/03/07/Flexbox Table/</id>
