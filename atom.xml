@@ -56,7 +56,7 @@
     <link href="http://snowgan.com/2017/06/21/How%20dose%20the%20Execution%20Context%20work%20in%20JS/"/>
     <id>http://snowgan.com/2017/06/21/How dose the Execution Context work in JS/</id>
     <published>2017-06-21T14:10:00.000Z</published>
-    <updated>2018-05-17T15:51:57.259Z</updated>
+    <updated>2018-05-17T16:03:33.941Z</updated>
     
     <content type="html"><![CDATA[<p>The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in.</p>
 <p>There can be numbers of EC in our program, and we can create a new EC by below three ways:</p>
@@ -65,7 +65,7 @@
 <li><strong>Function EC</strong>: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.</li>
 <li><strong>eval()</strong>: Using eval function also will create a EC, but it’s better to not use eval.</li>
 </ol>
-<p>And a call stack will help to manage those ECs. The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in. </p>
+<p>A <strong>execution stack</strong> will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.<br>The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in. </p>
 <a id="more"></a>
 ]]></content>
     
@@ -78,7 +78,7 @@
 &lt;li&gt;&lt;strong&gt;Function EC&lt;/strong&gt;: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;eval()&lt;/strong&gt;: Using eval function also will create a EC, but it’s better to not use eval.&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;And a call stack will help to manage those ECs. The bottom of the stack will always be the &lt;strong&gt;global EC&lt;/strong&gt;, and the top is a &lt;strong&gt;function EC&lt;/strong&gt; that current code is being executed in. &lt;/p&gt;
+&lt;p&gt;A &lt;strong&gt;execution stack&lt;/strong&gt; will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.&lt;br&gt;The bottom of the stack will always be the &lt;strong&gt;global EC&lt;/strong&gt;, and the top is a &lt;strong&gt;function EC&lt;/strong&gt; that current code is being executed in. &lt;/p&gt;
     
     </summary>
     
