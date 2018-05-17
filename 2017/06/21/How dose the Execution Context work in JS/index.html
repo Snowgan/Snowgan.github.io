@@ -5,8 +5,9 @@
 <li><strong>Function EC</strong>: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.</li>
 <li><strong>eval()</strong>: Using eval function also will create a EC, but it’s better to not use eval.</li>
 </ol>
-<p>A <strong>execution stack</strong> will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.<br>The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in. </p>
 <a id="more"></a>
+<p>A <strong>execution stack</strong> will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.<br>The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in.</p>
+<p>When one EC(caller) create a new EC(callee) during its running time, means a function is called, the caller suspends its own execution and callee’s EC will be pushed into execution stack. When the callee return back, will ends its EC and return to caller’s EC to resume the rest code.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2018/01/10/Install MongoDB on Debian 9/" class="prev">&lt;&lt;PREV: Install MongoDB on Debian 9</a><a href="/2017/03/07/Flexbox Table/" class="next">NEXT: Flexbox Table>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2017/06/21/How dose the Execution Context work in JS/';
     this.page.identifier = '2017/06/21/How dose the Execution Context work in JS/';
