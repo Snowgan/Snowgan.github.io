@@ -56,24 +56,26 @@
     <link href="http://snowgan.com/2017/06/21/How%20dose%20the%20Execution%20Context%20work%20in%20JS/"/>
     <id>http://snowgan.com/2017/06/21/How dose the Execution Context work in JS/</id>
     <published>2017-06-21T14:10:00.000Z</published>
-    <updated>2018-05-17T16:20:14.798Z</updated>
+    <updated>2018-05-18T18:31:11.624Z</updated>
     
-    <content type="html"><![CDATA[<p>The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in.</p>
-<p>There can be numbers of EC in our program, and we can create a new EC by below three ways:</p>
+    <content type="html"><![CDATA[<p>The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in. And there can be numbers of EC in our program.</p>
+<h3 id="How-to-create-a-EC"><a href="#How-to-create-a-EC" class="headerlink" title="How to create a EC"></a>How to create a EC</h3><p>We can create a new EC by below three ways:</p>
 <ol>
 <li><strong>Global EC</strong>: Will create a global EC at the begin of running application, and only one global EC in the whole program;</li>
 <li><strong>Function EC</strong>: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.</li>
 <li><strong>eval()</strong>: Using eval function also will create a EC, but it’s better to not use eval.</li>
 </ol>
 <a id="more"></a>
-<p>A <strong>execution stack</strong> will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.<br>The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in.</p>
+<h3 id="Execution-Stack"><a href="#Execution-Stack" class="headerlink" title="Execution Stack"></a>Execution Stack</h3><p>A <strong>execution stack</strong> will help to manage those ECs because js running in a browser is implemented as a single thread, only 1 EC will be the active EC in one time and other EC will be queued.<br>The bottom of the stack will always be the <strong>global EC</strong>, and the top is a <strong>function EC</strong> that current code is being executed in.</p>
 <p>When one EC(caller) create a new EC(callee) during its running time, means a function is called, the caller suspends its own execution and callee’s EC will be pushed into execution stack. When the callee return back, will ends its EC and return to caller’s EC to resume the rest code.</p>
+<p>For example:<br><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">n</span>) </span>&#123;</div><div class="line">  <span class="keyword">if</span> (n === <span class="number">1</span>) <span class="keyword">return</span> n;</div><div class="line">  <span class="keyword">const</span> x = sum(n - <span class="number">1</span>);</div><div class="line">  <span class="keyword">return</span> x + n;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">const</span> result = sum(<span class="number">3</span>);</div></pre></td></tr></table></figure></p>
+<p>The execution stack’s work flow like below:<br><img src="/image/ExecutionContext/001.gif" width="450" alt="Execution Stack" title="Execution Stack"></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in.&lt;/p&gt;
-&lt;p&gt;There can be numbers of EC in our program, and we can create a new EC by below three ways:&lt;/p&gt;
+      &lt;p&gt;The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in. And there can be numbers of EC in our program.&lt;/p&gt;
+&lt;h3 id=&quot;How-to-create-a-EC&quot;&gt;&lt;a href=&quot;#How-to-create-a-EC&quot; class=&quot;headerlink&quot; title=&quot;How to create a EC&quot;&gt;&lt;/a&gt;How to create a EC&lt;/h3&gt;&lt;p&gt;We can create a new EC by below three ways:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;&lt;strong&gt;Global EC&lt;/strong&gt;: Will create a global EC at the begin of running application, and only one global EC in the whole program;&lt;/li&gt;
 &lt;li&gt;&lt;strong&gt;Function EC&lt;/strong&gt;: Will create a function EC each time one function is called. And enter to this new execution environment to run the function code. When the function return back, will ends this new EC and return to previoue EC which called the function.&lt;/li&gt;
