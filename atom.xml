@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-05-15T14:36:02.202Z</updated>
+  <updated>2018-05-22T09:35:22.990Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,46 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Start Mongod</title>
+    <link href="http://snowgan.com/2018/01/11/Start%20Mongod/"/>
+    <id>http://snowgan.com/2018/01/11/Start Mongod/</id>
+    <published>2018-01-11T14:00:00.000Z</published>
+    <updated>2018-05-22T09:35:22.990Z</updated>
+    
+    <content type="html"><![CDATA[<p>To use MongoDB, we need to start the <strong>mongod</strong> deamon process. It handles data requests, manages data access, and performs background management operations.</p>
+<p>We can simply start it use command <code>mongod</code>, and it will use the default setting to running mongod.</p>
+<p>Or we can set custom configuration using command line options or configuration file(the default file is in /etc/mongod.conf).</p>
+<p>The following setting will start mongod which:</p>
+<ul>
+<li>runs on port 27000</li>
+<li>stores its data files in <code>/data/db/</code></li>
+<li>listens to connections from the IP address <code>192.168.103.100</code> and <code>localhost</code></li>
+<li>uses authentication</li>
+</ul>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># use command line</span></div><div class="line">mongod --port 27000 --dbpath /data/db/ --logpath /data/<span class="built_in">log</span>/mongod.log --bind_ip <span class="string">"127.0.0.</span></div><div class="line"><span class="string">1,192.168.103.100"</span> --auth</div><div class="line"></div><div class="line"><span class="comment"># use configuration file</span></div><div class="line">mongod --config /data/mongod.conf</div><div class="line"><span class="comment"># /data/mongod.conf content</span></div><div class="line"></div><div class="line"><span class="comment"># Where and how to store data.</span></div><div class="line">storage:</div><div class="line">  dbPath: /data/db</div><div class="line">  journal:</div><div class="line">    enabled: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># where to write logging data.</span></div><div class="line">systemLog:</div><div class="line">  destination: file</div><div class="line">  logAppend: <span class="literal">true</span></div><div class="line">  path: /data/<span class="built_in">log</span>/mongod.log</div><div class="line"></div><div class="line"><span class="comment"># network interfaces</span></div><div class="line">net:</div><div class="line">  port: 27000</div><div class="line">  bindIp: 127.0.0.1,192.168.103.100</div><div class="line"></div><div class="line"><span class="comment"># Enables authorization to control user’s access to database resources and operations</span></div><div class="line">security:</div><div class="line">  authorization: enabled</div></pre></td></tr></table></figure>
+<p>Refer this <a href="https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod" target="_blank" rel="external">reference</a> for full command line options. </p>
+<p>Refer this <a href="https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank" rel="external">reference</a> for configuration file setting.</p>
+<p>And then we can connect mongodb from localhost or 192.168.103.100 to the server <code>hostname:27000</code> on which mongod is running.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;To use MongoDB, we need to start the &lt;strong&gt;mongod&lt;/strong&gt; deamon process. It handles data requests, manages data access, and performs 
+    
+    </summary>
+    
+      <category term="Database" scheme="http://snowgan.com/categories/Database/"/>
+    
+      <category term="MongoDB" scheme="http://snowgan.com/categories/Database/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://snowgan.com/tags/MongoDB/"/>
+    
+      <category term="mongod" scheme="http://snowgan.com/tags/mongod/"/>
+    
+  </entry>
   
   <entry>
     <title>Install MongoDB on Debian 9</title>
@@ -56,7 +96,7 @@
     <link href="http://snowgan.com/2017/06/21/How%20dose%20the%20Execution%20Context%20work%20in%20JS/"/>
     <id>http://snowgan.com/2017/06/21/How dose the Execution Context work in JS/</id>
     <published>2017-06-21T14:10:00.000Z</published>
-    <updated>2018-05-18T18:32:58.170Z</updated>
+    <updated>2018-05-22T09:25:14.044Z</updated>
     
     <content type="html"><![CDATA[<p>The Execution Context(normally called ‘EC’) is an abstract concept which defines how to execute the javascript code. We can simply think of a execution context as the environment js code is executed in. And there can be numbers of EC in our program.</p>
 <h3 id="How-to-create-a-EC"><a href="#How-to-create-a-EC" class="headerlink" title="How to create a EC"></a>How to create a EC</h3><p>We can create a new EC by below three ways:</p>
