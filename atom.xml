@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-05-22T09:35:22.990Z</updated>
+  <updated>2018-05-22T09:36:09.068Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -20,11 +20,12 @@
     <link href="http://snowgan.com/2018/01/11/Start%20Mongod/"/>
     <id>http://snowgan.com/2018/01/11/Start Mongod/</id>
     <published>2018-01-11T14:00:00.000Z</published>
-    <updated>2018-05-22T09:35:22.990Z</updated>
+    <updated>2018-05-22T09:36:09.068Z</updated>
     
     <content type="html"><![CDATA[<p>To use MongoDB, we need to start the <strong>mongod</strong> deamon process. It handles data requests, manages data access, and performs background management operations.</p>
 <p>We can simply start it use command <code>mongod</code>, and it will use the default setting to running mongod.</p>
 <p>Or we can set custom configuration using command line options or configuration file(the default file is in /etc/mongod.conf).</p>
+<a id="more"></a>
 <p>The following setting will start mongod which:</p>
 <ul>
 <li>runs on port 27000</li>
@@ -40,7 +41,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;To use MongoDB, we need to start the &lt;strong&gt;mongod&lt;/strong&gt; deamon process. It handles data requests, manages data access, and performs 
+      &lt;p&gt;To use MongoDB, we need to start the &lt;strong&gt;mongod&lt;/strong&gt; deamon process. It handles data requests, manages data access, and performs background management operations.&lt;/p&gt;
+&lt;p&gt;We can simply start it use command &lt;code&gt;mongod&lt;/code&gt;, and it will use the default setting to running mongod.&lt;/p&gt;
+&lt;p&gt;Or we can set custom configuration using command line options or configuration file(the default file is in /etc/mongod.conf).&lt;/p&gt;
     
     </summary>
     
