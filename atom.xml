@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-05-22T09:36:09.068Z</updated>
+  <updated>2018-06-06T15:53:50.385Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,38 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Using MongoDB Node.js Driver (1)</title>
+    <link href="http://snowgan.com/2018/02/02/Using%20MongoDB%20Node.js%20Driver%201/"/>
+    <id>http://snowgan.com/2018/02/02/Using MongoDB Node.js Driver 1/</id>
+    <published>2018-02-02T14:00:00.000Z</published>
+    <updated>2018-06-06T15:53:50.385Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB driver is an interface between MongoDB and application. We can use it in our application to manipulate MongoDB, such as connection, CRUD actions, BSON and JSON translation, etc.<br><a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="external">MongoDB Node.js Driver</a> is the official MongoDB driver used for nodejs application.<br>Another popular module is <a href="https://github.com/Automattic/mongoose" target="_blank" rel="external">mongoose</a> which you can choose.</p>
+<a id="more"></a>
+<h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm i -S mongodb</div></pre></td></tr></table></figure>
+<h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Frist start mongod process and create a user for authentication.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># start mongod process in background</span></div><div class="line"><span class="comment"># simply use default setting </span></div><div class="line">$ mongod --auth --fork</div><div class="line"></div><div class="line"><span class="comment"># using mongo shell to create a root user</span></div><div class="line">$ mongo</div><div class="line">&gt; use admin</div><div class="line">&gt; db.createUser(&#123; user: <span class="string">"mongo-root"</span>, <span class="built_in">pwd</span>: <span class="string">"mongo-pass"</span>, roles: [&#123; role: <span class="string">"root"</span>, db: <span class="string">"admin"</span> &#125;] &#125;)</div></pre></td></tr></table></figure>
+<p>Then in our project, create a connection.js file to be responsible for the connection work with MongoDB.</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">const</span> MongoClient = <span class="built_in">require</span>(<span class="string">'mongodb'</span>).MongoClient;</div><div class="line"></div><div class="line"><span class="keyword">const</span> user = <span class="string">'mongo-root'</span>;</div><div class="line"><span class="keyword">const</span> password = <span class="string">'mongo-pass'</span>;</div><div class="line"><span class="keyword">const</span> authDB = <span class="string">'admin'</span>;</div><div class="line"></div><div class="line"><span class="keyword">const</span> url = <span class="string">`mongodb://<span class="subst">$&#123;user&#125;</span>:<span class="subst">$&#123;password&#125;</span>@localhost:27017/?authSource=<span class="subst">$&#123;authDB&#125;</span>`</span>;</div><div class="line"></div><div class="line"><span class="comment">// the connect method will return a promise when no callback passed </span></div><div class="line"><span class="keyword">const</span> connection = MongoClient.connect(url);</div><div class="line"></div><div class="line"><span class="built_in">module</span>.exports = connection;</div></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB driver is an interface between MongoDB and application. We can use it in our application to manipulate MongoDB, such as connection, CRUD actions, BSON and JSON translation, etc.&lt;br&gt;&lt;a href=&quot;https://github.com/mongodb/node-mongodb-native&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MongoDB Node.js Driver&lt;/a&gt; is the official MongoDB driver used for nodejs application.&lt;br&gt;Another popular module is &lt;a href=&quot;https://github.com/Automattic/mongoose&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mongoose&lt;/a&gt; which you can choose.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Database" scheme="http://snowgan.com/categories/Database/"/>
+    
+      <category term="MongoDB" scheme="http://snowgan.com/categories/Database/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://snowgan.com/tags/MongoDB/"/>
+    
+      <category term="Driver" scheme="http://snowgan.com/tags/Driver/"/>
+    
+  </entry>
   
   <entry>
     <title>Start Mongod</title>

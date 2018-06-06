@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://snowgan.com/2018/02/02/Using%20MongoDB%20Node.js%20Driver%201/</loc>
+    
+    <lastmod>2018-06-06T15:53:50.385Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://snowgan.com/2018/01/11/Start%20Mongod/</loc>
     
     <lastmod>2018-05-22T09:36:09.068Z</lastmod>
