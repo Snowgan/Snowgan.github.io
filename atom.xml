@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-06-06T15:58:01.596Z</updated>
+  <updated>2018-06-09T05:46:34.326Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -20,11 +20,12 @@
     <link href="http://snowgan.com/2018/02/02/Using%20MongoDB%20Node.js%20Driver%201/"/>
     <id>http://snowgan.com/2018/02/02/Using MongoDB Node.js Driver 1/</id>
     <published>2018-02-02T14:00:00.000Z</published>
-    <updated>2018-06-06T15:58:01.596Z</updated>
+    <updated>2018-06-09T05:46:34.326Z</updated>
     
     <content type="html"><![CDATA[<p>MongoDB driver is an interface between MongoDB and application. We can use it in our application to manipulate MongoDB, such as connection, CRUD actions, BSON and JSON translation, etc.</p>
 <p><a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="external">MongoDB Node.js Driver</a> is the official MongoDB driver used for nodejs application.</p>
 <p>Another popular module is <a href="https://github.com/Automattic/mongoose" target="_blank" rel="external">mongoose</a> which you can choose to do the same work.</p>
+<p>Please refer to <a href="http://mongodb.github.io/node-mongodb-native/3.0/" target="_blank" rel="external">official document</a> for more detail about MongoDB Node.js Driver.</p>
 <a id="more"></a>
 <h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm i -S mongodb</div></pre></td></tr></table></figure>
 <h3 id="Connection"><a href="#Connection" class="headerlink" title="Connection"></a>Connection</h3><p>Frist start mongod process and create a user for authentication.</p>
@@ -37,6 +38,7 @@
       &lt;p&gt;MongoDB driver is an interface between MongoDB and application. We can use it in our application to manipulate MongoDB, such as connection, CRUD actions, BSON and JSON translation, etc.&lt;/p&gt;
 &lt;p&gt;&lt;a href=&quot;https://github.com/mongodb/node-mongodb-native&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;MongoDB Node.js Driver&lt;/a&gt; is the official MongoDB driver used for nodejs application.&lt;/p&gt;
 &lt;p&gt;Another popular module is &lt;a href=&quot;https://github.com/Automattic/mongoose&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;mongoose&lt;/a&gt; which you can choose to do the same work.&lt;/p&gt;
+&lt;p&gt;Please refer to &lt;a href=&quot;http://mongodb.github.io/node-mongodb-native/3.0/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;official document&lt;/a&gt; for more detail about MongoDB Node.js Driver.&lt;/p&gt;
     
     </summary>
     
