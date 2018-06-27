@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://snowgan.com/2018/02/02/Using%20MongoDB%20Node.js%20Driver%201/</loc>
+    <loc>http://snowgan.com/2018/01/19/MongoDB%20Shell%20-%20Query%20Documents/</loc>
     
-    <lastmod>2018-06-09T13:10:36.664Z</lastmod>
+    <lastmod>2018-06-27T14:08:48.824Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://snowgan.com/2018/03/02/Using%20MongoDB%20Node.js%20Driver%201/</loc>
+    
+    <lastmod>2018-06-27T11:54:47.371Z</lastmod>
     
   </url>
   

@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-06-09T13:10:36.664Z</updated>
+  <updated>2018-06-27T11:54:47.371Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>Using MongoDB Node.js Driver (1)</title>
-    <link href="http://snowgan.com/2018/02/02/Using%20MongoDB%20Node.js%20Driver%201/"/>
-    <id>http://snowgan.com/2018/02/02/Using MongoDB Node.js Driver 1/</id>
-    <published>2018-02-02T14:00:00.000Z</published>
-    <updated>2018-06-09T13:10:36.664Z</updated>
+    <link href="http://snowgan.com/2018/03/02/Using%20MongoDB%20Node.js%20Driver%201/"/>
+    <id>http://snowgan.com/2018/03/02/Using MongoDB Node.js Driver 1/</id>
+    <published>2018-03-02T14:00:00.000Z</published>
+    <updated>2018-06-27T11:54:47.371Z</updated>
     
     <content type="html"><![CDATA[<p>MongoDB driver is an interface between MongoDB and application. We can use it in our application to manipulate MongoDB, such as connection, CRUD actions, BSON and JSON translation, etc.</p>
 <p><a href="https://github.com/mongodb/node-mongodb-native" target="_blank" rel="external">MongoDB Node.js Driver</a> is the official MongoDB driver used for nodejs application.</p>
@@ -59,6 +59,49 @@
       <category term="MongoDB" scheme="http://snowgan.com/tags/MongoDB/"/>
     
       <category term="Driver" scheme="http://snowgan.com/tags/Driver/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>MongoDB Shell - Query Documents</title>
+    <link href="http://snowgan.com/2018/01/19/MongoDB%20Shell%20-%20Query%20Documents/"/>
+    <id>http://snowgan.com/2018/01/19/MongoDB Shell - Query Documents/</id>
+    <published>2018-01-19T12:05:00.000Z</published>
+    <updated>2018-06-27T14:08:48.824Z</updated>
+    
+    <content type="html"><![CDATA[<p><code>find(query, projection)</code></p>
+<p>The find method is used to query documents in a collection and return a cursor to the selected documents.</p>
+<h3 id="Select-all"><a href="#Select-all" class="headerlink" title="Select all"></a>Select all</h3><p>Pass an empty object as the query filter to select all documents in the collection.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collectionName.find( &#123;&#125; )</div><div class="line"></div><div class="line"><span class="comment"># use .count() to show the size of selected documents</span></div><div class="line">db.collectionName.find( &#123;&#125; ).count()</div><div class="line"></div><div class="line"><span class="comment"># use .pretty() to print the result friendly</span></div><div class="line">db.collectionName.find( &#123;&#125; ).pretty()</div></pre></td></tr></table></figure>
+<h3 id="Select-by-equality-condition"><a href="#Select-by-equality-condition" class="headerlink" title="Select by equality condition"></a>Select by equality condition</h3><p>Pass an object with field:value to select specific documents whose field equal to the value.</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># select by one or more condition</span></div><div class="line">db.countried.find(&#123; ccyChar: 36 &#125;)</div><div class="line">db.countries.find(&#123; code: <span class="string">"hk"</span>, ccy: <span class="string">"HKD"</span> &#125;)</div><div class="line"></div><div class="line"><span class="comment"># select by nested field, do not forget the quotes to field</span></div><div class="line">db.products.find( &#123; <span class="string">"prods.prodName"</span>: <span class="string">"iphonex"</span> &#125; )</div></pre></td></tr></table></figure>
+<h4 id="Query-on-Arrays"><a href="#Query-on-Arrays" class="headerlink" title="Query on Arrays"></a>Query on Arrays</h4><ul>
+<li><p>on the entire array: only searh the documents whose specific field <strong>strictly equal</strong> to the array</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># query condition:</span></div><div class="line"><span class="comment"># genres is an array</span></div><div class="line"><span class="comment"># genres only has two elements</span></div><div class="line"><span class="comment"># and the first element equals to "Action", the second element equals to "Adventure"</span></div><div class="line">db.movie.find(&#123; genres: [<span class="string">"Action"</span>, <span class="string">"Adventure"</span>] &#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>based on any element: search the documents whose specific field include the value </p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># query condition:</span></div><div class="line"><span class="comment"># genres equals to "Action"</span></div><div class="line"><span class="comment"># or genres is an array and include "Action"</span></div><div class="line">db.movie.find(&#123; genres: <span class="string">"Action"</span> &#125;)</div></pre></td></tr></table></figure>
+</li>
+<li><p>based on a specific element: search the documents whose specific field satisfy the specific condition</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># query condition:</span></div><div class="line"><span class="comment"># genres is an object and its property name equals to "0", property value equals to "Action"</span></div><div class="line"><span class="comment"># or genres is an array and its first element equals to "Action"</span></div><div class="line">db.movie.find(&#123; <span class="string">"genres.0"</span>: <span class="string">"Action"</span> &#125;)</div></pre></td></tr></table></figure></li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;&lt;code&gt;find(query, projection)&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;The find method is used to query documents in a collection and return a cursor to the selecte
+    
+    </summary>
+    
+      <category term="Database" scheme="http://snowgan.com/categories/Database/"/>
+    
+      <category term="MongoDB" scheme="http://snowgan.com/categories/Database/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://snowgan.com/tags/MongoDB/"/>
+    
+      <category term="Shell" scheme="http://snowgan.com/tags/Shell/"/>
     
   </entry>
   
