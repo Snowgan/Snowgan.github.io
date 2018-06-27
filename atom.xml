@@ -67,12 +67,13 @@
     <link href="http://snowgan.com/2018/01/19/MongoDB%20Shell%20-%20Query%20Documents/"/>
     <id>http://snowgan.com/2018/01/19/MongoDB Shell - Query Documents/</id>
     <published>2018-01-19T12:05:00.000Z</published>
-    <updated>2018-06-27T14:08:48.824Z</updated>
+    <updated>2018-06-27T14:16:20.728Z</updated>
     
     <content type="html"><![CDATA[<p><code>find(query, projection)</code></p>
 <p>The find method is used to query documents in a collection and return a cursor to the selected documents.</p>
 <h3 id="Select-all"><a href="#Select-all" class="headerlink" title="Select all"></a>Select all</h3><p>Pass an empty object as the query filter to select all documents in the collection.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">db.collectionName.find( &#123;&#125; )</div><div class="line"></div><div class="line"><span class="comment"># use .count() to show the size of selected documents</span></div><div class="line">db.collectionName.find( &#123;&#125; ).count()</div><div class="line"></div><div class="line"><span class="comment"># use .pretty() to print the result friendly</span></div><div class="line">db.collectionName.find( &#123;&#125; ).pretty()</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <h3 id="Select-by-equality-condition"><a href="#Select-by-equality-condition" class="headerlink" title="Select by equality condition"></a>Select by equality condition</h3><p>Pass an object with field:value to select specific documents whose field equal to the value.</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># select by one or more condition</span></div><div class="line">db.countried.find(&#123; ccyChar: 36 &#125;)</div><div class="line">db.countries.find(&#123; code: <span class="string">"hk"</span>, ccy: <span class="string">"HKD"</span> &#125;)</div><div class="line"></div><div class="line"><span class="comment"># select by nested field, do not forget the quotes to field</span></div><div class="line">db.products.find( &#123; <span class="string">"prods.prodName"</span>: <span class="string">"iphonex"</span> &#125; )</div></pre></td></tr></table></figure>
 <h4 id="Query-on-Arrays"><a href="#Query-on-Arrays" class="headerlink" title="Query on Arrays"></a>Query on Arrays</h4><ul>
@@ -90,7 +91,9 @@
     <summary type="html">
     
       &lt;p&gt;&lt;code&gt;find(query, projection)&lt;/code&gt;&lt;/p&gt;
-&lt;p&gt;The find method is used to query documents in a collection and return a cursor to the selecte
+&lt;p&gt;The find method is used to query documents in a collection and return a cursor to the selected documents.&lt;/p&gt;
+&lt;h3 id=&quot;Select-all&quot;&gt;&lt;a href=&quot;#Select-all&quot; class=&quot;headerlink&quot; title=&quot;Select all&quot;&gt;&lt;/a&gt;Select all&lt;/h3&gt;&lt;p&gt;Pass an empty object as the query filter to select all documents in the collection.&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;db.collectionName.find( &amp;#123;&amp;#125; )&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# use .count() to show the size of selected documents&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;db.collectionName.find( &amp;#123;&amp;#125; ).count()&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;comment&quot;&gt;# use .pretty() to print the result friendly&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;db.collectionName.find( &amp;#123;&amp;#125; ).pretty()&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
