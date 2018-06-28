@@ -1,5 +1,4 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Webpack Learning · Snowgan</title><meta name="description" content="Webpack Learning - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism-okaidia.css" type="text/css">
-<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Front-End/" class="bread-crumb-item">Front-End</a>/<a href="/categories/Front-End/Webpack/" class="bread-crumb-item">Webpack</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">CONTENT</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-use-webpack"><span class="toc-text">Why use webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-use-webpack"><span class="toc-text">How to use webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-0"><span class="toc-text">Level 0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-1"><span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-2"><span class="toc-text">Level 2</span></a></li></ol></li></ol></div><h1 class="post-title">Webpack Learning</h1><div class="post-info">Jan 26, 2017<span class="tags-info"><a href="/tags/Webpack/" class="tag-link">Webpack</a><a href="/tags/Tool/" class="tag-link">Tool</a></span></div><div class="post-content"><h2 id="Why-use-webpack"><a href="#Why-use-webpack" class="headerlink" title="Why use webpack"></a>Why use webpack</h2><p>Why?</p>
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Webpack Learning · Snowgan</title><meta name="description" content="Webpack Learning - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Front-End/" class="bread-crumb-item">Front-End</a>/<a href="/categories/Front-End/Webpack/" class="bread-crumb-item">Webpack</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">CONTENT</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Why-use-webpack"><span class="toc-text">Why use webpack</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#How-to-use-webpack"><span class="toc-text">How to use webpack</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-0"><span class="toc-text">Level 0</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-1"><span class="toc-text">Level 1</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Level-2"><span class="toc-text">Level 2</span></a></li></ol></li></ol></div><h1 class="post-title">Webpack Learning</h1><div class="post-info">Jan 26, 2017<span class="tags-info"><a href="/tags/Webpack/" class="tag-link">Webpack</a><a href="/tags/Tool/" class="tag-link">Tool</a></span></div><div class="post-content"><h2 id="Why-use-webpack"><a href="#Why-use-webpack" class="headerlink" title="Why use webpack"></a>Why use webpack</h2><p>Why?</p>
 <p>It’s the most popular build tool for javascript(According stars on github).</p>
 <ul>
 <li>Even though its configuration is too complex if we want a flexible build environment.</li>
@@ -13,7 +12,7 @@
 <h2 id="How-to-use-webpack"><a href="#How-to-use-webpack" class="headerlink" title="How to use webpack"></a>How to use webpack</h2><p>Webpack worked via a configuration object. It’s a js file named webpack.config.js by default.<br>Please refer to office ducuments for details : )</p>
 <h3 id="Level-0"><a href="#Level-0" class="headerlink" title="Level 0"></a>Level 0</h3><p>Basicly we need to defined an entry file from which webpack start work.</p>
 <p>Also an output destination to store generated bundle files.</p>
-<pre class="line-numbers language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// entry: String | Array | Object</span>
   entry<span class="token punctuation">:</span> <span class="token string">'./src/main.js'</span><span class="token punctuation">,</span>
   output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -22,7 +21,7 @@
   <span class="token punctuation">}</span>
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// Webpack will start from main.js in src folder, and create dist folder after work to place the bundle file named build.js</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote>
 <p><strong>Tips</strong></p>
 <p>We can use Node’s path module to avoid relative path issue.</p>
@@ -30,7 +29,7 @@
 </blockquote>
 <p><strong>Multiple entries</strong></p>
 <p>When we use object value to define the entry, we can define multiple entries by use more than one property. The property key can be used by the variable ‘<strong>[name]</strong>‘</p>
-<pre class="line-numbers language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     home<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/home.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'about-me'</span><span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/about.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -48,7 +47,7 @@
 <span class="token comment" spellcheck="true">// |- - about-me.js</span>
 <span class="token comment" spellcheck="true">// |- - sub</span>
 <span class="token comment" spellcheck="true">// |- - - child.js</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <blockquote>
 <p><strong>Tips</strong></p>
 <p>String type entry also equal to object type entry with one property and the property key is main.</p>
@@ -63,7 +62,7 @@
 <p>We can do all of these things using <strong>loaders</strong>.</p>
 <p>First you need to install the loaders you want, like babel-loader, css-loader, sass-loader.</p>
 <p>And then config how to use the loaders. We can define in webpack.config.js.</p>
-<pre class="line-numbers language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
@@ -87,7 +86,7 @@
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// This configuration means when use require()/import statement to solve a file end with '.js' in ./src folder</span>
 <span class="token comment" spellcheck="true">// but not in ./src/mock, use the babel-loader to transform it before add it to the bundle</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>There are some most used loaders:</p>
 <ul>
 <li><a href="https://github.com/webpack-contrib/style-loader" target="_blank" rel="noopener">style-loader</a> Adds CSS to the DOM by injecting a \&lt;style> tag</li>
@@ -97,7 +96,7 @@
 <li><a href="https://github.com/webpack-contrib/url-loader" target="_blank" rel="noopener">url-loader</a> Works like the file-loader, but can return a DataURL if the file is smaller than a byte limit.</li>
 </ul>
 <p>We can apply multiple loaders. They are are executed in reverse order of definition in rules(bottom to top).</p>
-<pre class="line-numbers language-js"><code class="language-js">module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+<pre class=" language-js"><code class="language-js">module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       type<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
@@ -114,13 +113,13 @@
   <span class="token punctuation">]</span>
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// Execute loaders like style(css(test.css))</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <h3 id="Level-2"><a href="#Level-2" class="headerlink" title="Level 2"></a>Level 2</h3><p>Another important configuration is <strong>plugins</strong>.</p>
 <p>It likes the task concept in Grunt or Gulp. And we can use lots of plugins like uglify or copy assests work to make the final bundle more optimized.</p>
 <p>First we require the plugin we want to use.</p>
 <p>Second create an instance of the plugin in the webpack’s plugins array.</p>
 <p>For example, we want to use <code>DefinePlugin</code> which will define global constant in our application at compile phase</p>
-<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// DefinePlugin is a build-in plugin and can be referred by webpack</span>
+<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// DefinePlugin is a build-in plugin and can be referred by webpack</span>
 <span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -136,7 +135,7 @@ module<span class="token punctuation">.</span>exports <span class="token operato
 <span class="token punctuation">}</span>
 <span class="token comment" spellcheck="true">// DefinePlugin does a direct text replacement</span>
 <span class="token comment" spellcheck="true">// Define a string need to use: '"abc"' or JSON.stringify('abc')</span>
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</code></pre>
 <p>Please refer to official <a href="https://webpack.js.org/plugins/" target="_blank" rel="noopener">plugins list</a> to learning more.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2017/02/10/JavaScript Events/" class="prev">&lt;&lt;PREV: JavaScript Events</a><a href="/2017/01/11/Prototype/" class="next">NEXT: Prototype in JS>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2017/01/26/Webpack Learning/';
