@@ -12,7 +12,7 @@
 <h2 id="How-to-use-webpack"><a href="#How-to-use-webpack" class="headerlink" title="How to use webpack"></a>How to use webpack</h2><p>Webpack worked via a configuration object. It’s a js file named webpack.config.js by default.<br>Please refer to office ducuments for details : )</p>
 <h3 id="Level-0"><a href="#Level-0" class="headerlink" title="Level 0"></a>Level 0</h3><p>Basicly we need to defined an entry file from which webpack start work.</p>
 <p>Also an output destination to store generated bundle files.</p>
-<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   <span class="token comment" spellcheck="true">// entry: String | Array | Object</span>
   entry<span class="token punctuation">:</span> <span class="token string">'./src/main.js'</span><span class="token punctuation">,</span>
   output<span class="token punctuation">:</span> <span class="token punctuation">{</span>
@@ -29,7 +29,7 @@
 </blockquote>
 <p><strong>Multiple entries</strong></p>
 <p>When we use object value to define the entry, we can define multiple entries by use more than one property. The property key can be used by the variable ‘<strong>[name]</strong>‘</p>
-<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   entry<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     home<span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/home.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
     <span class="token string">'about-me'</span><span class="token punctuation">:</span> path<span class="token punctuation">.</span><span class="token function">resolve</span><span class="token punctuation">(</span>__dirname<span class="token punctuation">,</span> <span class="token string">'./src/about.js'</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
@@ -62,7 +62,7 @@
 <p>We can do all of these things using <strong>loaders</strong>.</p>
 <p>First you need to install the loaders you want, like babel-loader, css-loader, sass-loader.</p>
 <p>And then config how to use the loaders. We can define in webpack.config.js.</p>
-<pre class=" language-js"><code class="language-js">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>
   module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
     rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
       <span class="token punctuation">{</span>
@@ -96,7 +96,7 @@
 <li><a href="https://github.com/webpack-contrib/url-loader" target="_blank" rel="noopener">url-loader</a> Works like the file-loader, but can return a DataURL if the file is smaller than a byte limit.</li>
 </ul>
 <p>We can apply multiple loaders. They are are executed in reverse order of definition in rules(bottom to top).</p>
-<pre class=" language-js"><code class="language-js">module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript">module<span class="token punctuation">:</span> <span class="token punctuation">{</span>
   rules<span class="token punctuation">:</span> <span class="token punctuation">[</span>
     <span class="token punctuation">{</span>
       type<span class="token punctuation">:</span> <span class="token regex">/\.css$/</span><span class="token punctuation">,</span>
@@ -119,7 +119,7 @@
 <p>First we require the plugin we want to use.</p>
 <p>Second create an instance of the plugin in the webpack’s plugins array.</p>
 <p>For example, we want to use <code>DefinePlugin</code> which will define global constant in our application at compile phase</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// DefinePlugin is a build-in plugin and can be referred by webpack</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// DefinePlugin is a build-in plugin and can be referred by webpack</span>
 <span class="token keyword">const</span> webpack <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'webpack'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
 module<span class="token punctuation">.</span>exports <span class="token operator">=</span> <span class="token punctuation">{</span>

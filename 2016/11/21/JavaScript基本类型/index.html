@@ -15,7 +15,7 @@
 <li>Symbol（es6）</li>
 </ul>
 <a id="more"></a>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// undefined: 只申明未赋值，会默认设为undefined</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">let</span> a<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// undefined: 只申明未赋值，会默认设为undefined</span>
 a <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">// null: 用来表示数据未知或不可用</span>
 
 <span class="token comment" spellcheck="true">// 使用typeof操作符可返回操作数的类型字符串</span>
@@ -64,7 +64,7 @@ a <span class="token operator">=</span> <span class="token keyword">null</span> 
 </tbody>
 </table>
 <p>原生的number、string、boolean都有对应的对象类型Number、String、Boolean，这些对象提供了一些方便的内置方法，原生类型也可以调用这些对象上的方法，其原理是：在调用方法时临时生成对应的对象类型，该对象正常调用方法，调用结束后立即舍弃临时对象</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
 s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 'ABC'</span>
 
 <span class="token comment" spellcheck="true">// 实际执行逻辑大概如下</span>
@@ -84,13 +84,13 @@ tmpS <span class="token operator">=</span> undefined<span class="token punctuati
 <p>在JS的数字运算中，溢出、下溢、被0整除时不会报错。结果溢出时用Infinity来表示结果。结果为非数字值时用NaN表示</p>
 <p>NaN是一个特殊的数值，表示在本该返回数值的操作中没有返回数值的情况。与任何值都不相等，包括NaN本身</p>
 <p>Number对象上还定义了一些边界数字：</p>
-<pre class=" language-js"><code class="language-js">Number<span class="token punctuation">.</span>MAX_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最大整数</span>
+<pre class=" language-javascript"><code class="language-javascript">Number<span class="token punctuation">.</span>MAX_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最大整数</span>
 Number<span class="token punctuation">.</span>MIN_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最小整数</span>
 Number<span class="token punctuation">.</span>MAX_VALUE  <span class="token comment" spellcheck="true">// 最大数2^53</span>
 Number<span class="token punctuation">.</span>MIN_VALUE  <span class="token comment" spellcheck="true">// 最小数-2^53</span>
 </code></pre>
 <p>常用Math对象上的方法来进行数学计算：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Math对象的常用函数和常量</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// Math对象的常用函数和常量</span>
 Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 8: 2的3次幂</span>
 Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// e的3次幂</span>
 Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token number">6</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 1: 四舍五入</span>
@@ -111,15 +111,15 @@ Math<span class="token punctuation">.</span><span class="token function">floor</
 </code></pre>
 <h4 id="2-2-String"><a href="#2-2-String" class="headerlink" title="2.2 String"></a>2.2 String</h4><p>模板字符串</p>
 <p>在ES6之前，如果要动态生成字符串，需要这样写：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token string">'Hello '</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
 </code></pre>
 <p>但在ES6中，可以很方便地使用模板字符串实现：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token template-string"><span class="token string">`Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
 </code></pre>
 <p>字符串常用方法：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'Hello World'</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'Hello World'</span>
 s<span class="token punctuation">.</span>length            <span class="token comment" spellcheck="true">// => "11" : 字符长度</span>
 s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true">// => "H" : 第一个字符</span>
 s<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'l'</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// => "2" : 字符l首次出现的索引位置</span>
@@ -145,7 +145,7 @@ String<span class="token punctuation">.</span>prototype<span class="token punctu
 <li>调用内置函数<code>parseInt(string,[ radix ])</code>或<code>parseFloat(string,[ radix ])</code>，radix指定解析进制规则，默认10</li>
 <li>使用’*’运算符会默认将字符串转换为数字，若不能转换则运算结果为NaN</li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 90</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 90</span>
 a <span class="token operator">=</span> <span class="token string">'30'</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 90</span>
 a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'a'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// NaN</span>
 </code></pre>
@@ -160,7 +160,7 @@ a <span class="token operator">=</span> <span class="token number">30</span> <sp
 <li>使用’!!’逻辑运算符</li>
 </ul>
 <p>JS中的任何值都能转换为布尔值。undefined、null、0、-0、NaN、“”(空字符串)会转换为false，其余则转换为true。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> boo1 <span class="token operator">=</span> <span class="token function">Boolean</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false</span>
 <span class="token keyword">const</span> boo2 <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>b<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// false</span>
 </code></pre>

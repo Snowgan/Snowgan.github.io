@@ -9,7 +9,7 @@
 <h2 id="Register-Event-handler"><a href="#Register-Event-handler" class="headerlink" title="Register Event handler"></a>Register Event handler</h2><p>Each DOM element has the <strong>addEventListener</strong> method which allows you to add any number of handlers.</p>
 <p>We can use <code>addEventListener(eventName, handler, isCapture)</code> to register a function as handler for specific event. The third parameter ‘isCapture’ indicating the handler triggered order (capture or bubble, which will mentioned later), default is false.</p>
 <p>For example, register a function to a button’s click event:</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// &lt;button id="test-btn">Test Event&lt;/button></span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// &lt;button id="test-btn">Test Event&lt;/button></span>
 
 <span class="token keyword">var</span> btn <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsById</span><span class="token punctuation">(</span><span class="token string">'test-btn'</span><span class="token punctuation">)</span>
 
@@ -24,7 +24,7 @@ btn<span class="token punctuation">.</span><span class="token function">addEvent
 <h3 id="Keyboard-Events"><a href="#Keyboard-Events" class="headerlink" title="Keyboard Events"></a>Keyboard Events</h3><p>The <strong>keydown</strong> event is fired when a key on the keyboard is pressed and the <strong>keyup</strong> event is fired when it is released. The keydown event will be fired repeatly when a key is pressed and held.</p>
 <p>The <strong>keypress</strong> event is fired after keydown event when a key is pressed and the key will produce an input character, not the function keys such as Shift, Ctrl or Alt.</p>
 <p>We can read the <strong>key</strong> property of the event object to figure out which key is being pressed or released. And <strong>ctrlKey</strong>, <strong>shiftKey</strong>, <strong>altKey</strong>, <strong>metaKey(command on Mac)</strong> will be set true when <code>Shift</code>, <code>Ctrl</code>, <code>Alt</code>, and <code>Meta</code> key event is fired.</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// &lt;input type="text"></span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// &lt;input type="text"></span>
 
 <span class="token keyword">var</span> ipt <span class="token operator">=</span> document<span class="token punctuation">.</span><span class="token function">getElementsByTagName</span><span class="token punctuation">(</span><span class="token string">'input'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 ipt<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">.</span><span class="token function">addEventListener</span><span class="token punctuation">(</span><span class="token string">'keydown'</span><span class="token punctuation">,</span> <span class="token keyword">function</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>

@@ -10,7 +10,7 @@
 </ol>
 <a id="more"></a>
 <h3 id="2-1-对象方法调用"><a href="#2-1-对象方法调用" class="headerlink" title="2.1 对象方法调用"></a>2.1 对象方法调用</h3><p>当对象的某一属性是一个函数，且通过该对象属性名调用函数时则视为对象方法调用，函数执行时的this指向<strong>对象本身</strong></p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">function</span> <span class="token function">printName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">function</span> <span class="token function">printName</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">}</span>
 
@@ -44,7 +44,7 @@ parent<span class="token punctuation">.</span>child<span class="token punctuatio
 <li>返回这个创建的对象，作为构造器调用的返回值</li>
 </ol>
 <p>所以在对象构造器调用方式下，this指向的是<strong>该构造器所创建的实例对象</strong></p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 通常作为构造器的函数名首字母大写(代码规范)</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 通常作为构造器的函数名首字母大写(代码规范)</span>
 <span class="token keyword">function</span> <span class="token function">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'Lee'</span><span class="token punctuation">;</span>
   <span class="token keyword">this</span><span class="token punctuation">.</span>func <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
@@ -65,7 +65,7 @@ parent<span class="token punctuation">.</span>child<span class="token punctuatio
 <p><code>func.apply(thisVal[, argsArray])</code></p>
 <p><code>func.call(thisVal[, args1, args2, ...])</code></p>
 <p>两个方法的功能完全一样，区别在于apply传入由参数组成的数组或类数组对象，而call传入参数列表</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> <span class="token string">'Mike'</span><span class="token punctuation">,</span>
   func<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">', '</span> <span class="token operator">+</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -78,7 +78,7 @@ obj1<span class="token punctuation">.</span>func<span class="token punctuation">
 <p>另外还有一个方法bind()，将返回一个新函数，新函数的this始终指向传入的第一个参数，无论其以何种方式被调用。除此之外，函数体执行逻辑和原函数一样</p>
 <p><code>func.bind(thisVal[, args1, args2, ...])</code></p>
 <p>传入bind的参数列表和传入新函数的参数会依次组成新函数的arguments变量</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">var</span> obj1 <span class="token operator">=</span> <span class="token punctuation">{</span>
   name<span class="token punctuation">:</span> <span class="token string">'Mike'</span><span class="token punctuation">,</span>
   func<span class="token punctuation">:</span> <span class="token keyword">function</span><span class="token punctuation">(</span>age<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     console<span class="token punctuation">.</span><span class="token function">log</span><span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>name <span class="token operator">+</span> <span class="token string">', '</span> <span class="token operator">+</span> age<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -89,7 +89,7 @@ obj1<span class="token punctuation">.</span>func<span class="token punctuation">
 <span class="token function">newFunc</span><span class="token punctuation">(</span><span class="token number">25</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment" spellcheck="true">// 'Rose, 50'  [50， 25]</span>
 </code></pre>
 <h3 id="2-4-普通函数调用"><a href="#2-4-普通函数调用" class="headerlink" title="2.4 普通函数调用"></a>2.4 普通函数调用</h3><p>普通函数调用的表现形式主要有以下几种：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// 通过函数名调用</span>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token comment" spellcheck="true">// 通过函数名调用</span>
 <span class="token keyword">function</span> <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span><span class="token punctuation">}</span>
 <span class="token function">func</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 
