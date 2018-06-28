@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript基本类型 · Snowgan</title><meta name="description" content="JavaScript基本类型 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Front-End/" class="bread-crumb-item">Front-End</a>/<a href="/categories/Front-End/JavaScript/" class="bread-crumb-item">JavaScript</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-变量和常量"><span class="toc-text">1. 变量和常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据类型"><span class="toc-text">2. 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Number"><span class="toc-text">2.1 Number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-String"><span class="toc-text">2.2 String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-类型转换"><span class="toc-text">2.3 类型转换</span></a></li></ol></li></ol></div><h1 class="post-title">JavaScript基本类型</h1><div class="post-info">2016年11月21日<span class="tags-info"><a href="/tags/JavaScript/" class="tag-link">JavaScript</a><a href="/tags/Basic/" class="tag-link">Basic</a></span></div><div class="post-content"><h3 id="1-变量和常量"><a href="#1-变量和常量" class="headerlink" title="1. 变量和常量"></a>1. 变量和常量</h3><p>JavaScript中的数据存储类型分为变量和常量（常量是es6新引入的），常量在声明初始化后就不能改变其值，变量则可任意改变。代码中尽可能使用常量以避免意外改变了值，除非业务逻辑明确需要一个变量</p>
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> JavaScript基本类型 · Snowgan</title><meta name="description" content="JavaScript基本类型 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Front-End/" class="bread-crumb-item">Front-End</a>/<a href="/categories/Front-End/JavaScript/" class="bread-crumb-item">JavaScript</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-变量和常量"><span class="toc-text">1. 变量和常量</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-数据类型"><span class="toc-text">2. 数据类型</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-Number"><span class="toc-text">2.1 Number</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-String"><span class="toc-text">2.2 String</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-类型转换"><span class="toc-text">2.3 类型转换</span></a></li></ol></li></ol></div><h1 class="post-title">JavaScript基本类型</h1><div class="post-info">2016年11月21日<span class="tags-info"><a href="/tags/JavaScript/" class="tag-link">JavaScript</a><a href="/tags/Basic/" class="tag-link">Basic</a></span></div><div class="post-content"><h3 id="1-变量和常量"><a href="#1-变量和常量" class="headerlink" title="1. 变量和常量"></a>1. 变量和常量</h3><p>JavaScript中的数据存储类型分为变量和常量（常量是es6新引入的），常量在声明初始化后就不能改变其值，变量则可任意改变。代码中尽可能使用常量以避免意外改变了值，除非业务逻辑明确需要一个变量</p>
 <p>变量声明关键字： <strong>var</strong>, <strong>let(es6块级作用域申明)</strong></p>
 <p>常量声明关键字： <strong>const(es6)</strong></p>
 <blockquote>
@@ -15,12 +16,12 @@
 <li>Symbol（es6）</li>
 </ul>
 <a id="more"></a>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">let</span> a<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// undefined: 只申明未赋值，会默认设为undefined</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">let</span> a<span class="token punctuation">;</span>   <span class="token comment" spellcheck="true">// undefined: 只申明未赋值，会默认设为undefined</span>
 a <span class="token operator">=</span> <span class="token keyword">null</span> <span class="token comment" spellcheck="true">// null: 用来表示数据未知或不可用</span>
 
 <span class="token comment" spellcheck="true">// 使用typeof操作符可返回操作数的类型字符串</span>
 <span class="token keyword">typeof</span> operand
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <table>
 <thead>
 <tr>
@@ -64,14 +65,14 @@ a <span class="token operator">=</span> <span class="token keyword">null</span> 
 </tbody>
 </table>
 <p>原生的number、string、boolean都有对应的对象类型Number、String、Boolean，这些对象提供了一些方便的内置方法，原生类型也可以调用这些对象上的方法，其原理是：在调用方法时临时生成对应的对象类型，该对象正常调用方法，调用结束后立即舍弃临时对象</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'abc'</span><span class="token punctuation">;</span>
 s<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span>  <span class="token comment" spellcheck="true">// 'ABC'</span>
 
 <span class="token comment" spellcheck="true">// 实际执行逻辑大概如下</span>
 <span class="token keyword">const</span> tmpS <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">String</span><span class="token punctuation">(</span>s<span class="token punctuation">)</span><span class="token punctuation">;</span>
 tmpS<span class="token punctuation">.</span><span class="token function">toUpperCase</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 tmpS <span class="token operator">=</span> undefined<span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>JS也提供了其他常用的内置对象：</p>
 <ul>
 <li>Array</li>
@@ -84,13 +85,13 @@ tmpS <span class="token operator">=</span> undefined<span class="token punctuati
 <p>在JS的数字运算中，溢出、下溢、被0整除时不会报错。结果溢出时用Infinity来表示结果。结果为非数字值时用NaN表示</p>
 <p>NaN是一个特殊的数值，表示在本该返回数值的操作中没有返回数值的情况。与任何值都不相等，包括NaN本身</p>
 <p>Number对象上还定义了一些边界数字：</p>
-<pre class=" language-js"><code class="language-js">Number<span class="token punctuation">.</span>MAX_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最大整数</span>
+<pre class="line-numbers language-js"><code class="language-js">Number<span class="token punctuation">.</span>MAX_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最大整数</span>
 Number<span class="token punctuation">.</span>MIN_SAFE_INTEGER  <span class="token comment" spellcheck="true">// 最小整数</span>
 Number<span class="token punctuation">.</span>MAX_VALUE  <span class="token comment" spellcheck="true">// 最大数2^53</span>
 Number<span class="token punctuation">.</span>MIN_VALUE  <span class="token comment" spellcheck="true">// 最小数-2^53</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>常用Math对象上的方法来进行数学计算：</p>
-<pre class=" language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Math对象的常用函数和常量</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token comment" spellcheck="true">// Math对象的常用函数和常量</span>
 Math<span class="token punctuation">.</span><span class="token function">pow</span><span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 8: 2的3次幂</span>
 Math<span class="token punctuation">.</span><span class="token function">exp</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// e的3次幂</span>
 Math<span class="token punctuation">.</span><span class="token function">round</span><span class="token punctuation">(</span><span class="token punctuation">.</span><span class="token number">6</span><span class="token punctuation">)</span>   <span class="token comment" spellcheck="true">// 1: 四舍五入</span>
@@ -108,18 +109,18 @@ Math<span class="token punctuation">.</span>E           <span class="token comme
 
 <span class="token comment" spellcheck="true">// 在给定的最小最大值之间随机取一个整数</span>
 Math<span class="token punctuation">.</span><span class="token function">floor</span><span class="token punctuation">(</span>Math<span class="token punctuation">.</span><span class="token function">random</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">*</span><span class="token punctuation">(</span>max<span class="token operator">-</span>min<span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token operator">+</span>min
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-2-String"><a href="#2-2-String" class="headerlink" title="2.2 String"></a>2.2 String</h4><p>模板字符串</p>
 <p>在ES6之前，如果要动态生成字符串，需要这样写：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token string">'Hello '</span> <span class="token operator">+</span> name<span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>但在ES6中，可以很方便地使用模板字符串实现：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> name <span class="token operator">=</span> <span class="token string">'Snow'</span><span class="token punctuation">;</span>
 <span class="token keyword">var</span> welcome <span class="token operator">=</span> <span class="token template-string"><span class="token string">`Hello </span><span class="token interpolation"><span class="token interpolation-punctuation punctuation">${</span>name<span class="token interpolation-punctuation punctuation">}</span></span><span class="token string">`</span></span><span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 <p>字符串常用方法：</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'Hello World'</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> s <span class="token operator">=</span> <span class="token string">'Hello World'</span>
 s<span class="token punctuation">.</span>length            <span class="token comment" spellcheck="true">// => "11" : 字符长度</span>
 s<span class="token punctuation">.</span><span class="token function">charAt</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">)</span>         <span class="token comment" spellcheck="true">// => "H" : 第一个字符</span>
 s<span class="token punctuation">.</span><span class="token function">indexOf</span><span class="token punctuation">(</span><span class="token string">'l'</span><span class="token punctuation">)</span>      <span class="token comment" spellcheck="true">// => "2" : 字符l首次出现的索引位置</span>
@@ -138,17 +139,17 @@ s<span class="token punctuation">.</span><span class="token function">slice</spa
 
 <span class="token comment" spellcheck="true">// 在不支持trim方法的情况下，可自行写一个trim函数：</span>
 String<span class="token punctuation">.</span>prototype<span class="token punctuation">.</span>trim <span class="token operator">=</span> <span class="token keyword">function</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">{</span><span class="token keyword">return</span> <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">replace</span><span class="token punctuation">(</span><span class="token regex">/^\s+|\s+$/g</span><span class="token punctuation">,</span> <span class="token string">""</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span class="token punctuation">}</span><span class="token punctuation">;</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h4 id="2-3-类型转换"><a href="#2-3-类型转换" class="headerlink" title="2.3 类型转换"></a>2.3 类型转换</h4><p><strong>string转number</strong></p>
 <ul>
 <li>调用Number对象构造器，能转换数字则返回对应数字，不能则返回NaN</li>
 <li>调用内置函数<code>parseInt(string,[ radix ])</code>或<code>parseFloat(string,[ radix ])</code>，radix指定解析进制规则，默认10</li>
 <li>使用’*’运算符会默认将字符串转换为数字，若不能转换则运算结果为NaN</li>
 </ul>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 90</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">var</span> a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// 90</span>
 a <span class="token operator">=</span> <span class="token string">'30'</span> <span class="token operator">*</span> <span class="token string">'3'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// 90</span>
 a <span class="token operator">=</span> <span class="token number">30</span> <span class="token operator">*</span> <span class="token string">'a'</span><span class="token punctuation">;</span>    <span class="token comment" spellcheck="true">// NaN</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p><strong>number转string</strong></p>
 <ul>
 <li>调用对象的<code>toString()</code>方法，JS的所有对象都会有一个toString方法</li>
@@ -160,10 +161,10 @@ a <span class="token operator">=</span> <span class="token number">30</span> <sp
 <li>使用’!!’逻辑运算符</li>
 </ul>
 <p>JS中的任何值都能转换为布尔值。undefined、null、0、-0、NaN、“”(空字符串)会转换为false，其余则转换为true。</p>
-<pre class=" language-js"><code class="language-js"><span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
+<pre class="line-numbers language-js"><code class="language-js"><span class="token keyword">const</span> b <span class="token operator">=</span> <span class="token string">''</span><span class="token punctuation">;</span>
 <span class="token keyword">const</span> boo1 <span class="token operator">=</span> <span class="token function">Boolean</span><span class="token punctuation">(</span>b<span class="token punctuation">)</span><span class="token punctuation">;</span>  <span class="token comment" spellcheck="true">// false</span>
 <span class="token keyword">const</span> boo2 <span class="token operator">=</span> <span class="token operator">!</span><span class="token operator">!</span>b<span class="token punctuation">;</span>         <span class="token comment" spellcheck="true">// false</span>
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/12/01/CSS模糊效果实践/" class="prev">&lt;&lt;上一篇: CSS模糊效果实践</a><a href="/2015/06/25/Swift笔记（一）-基础知识/" class="next">下一篇: Swift笔记（一） 基础知识>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2016/11/21/JavaScript基本类型/';
     this.page.identifier = '2016/11/21/JavaScript基本类型/';

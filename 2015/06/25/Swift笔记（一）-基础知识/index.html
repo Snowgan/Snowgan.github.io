@@ -1,13 +1,14 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Swift笔记（一） 基础知识 · Snowgan</title><meta name="description" content="Swift笔记（一） 基础知识 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/iOS/" class="bread-crumb-item">iOS</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单值"><span class="toc-text">简单值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制流"><span class="toc-text">控制流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typealias"><span class="toc-text">typealias</span></a></li></ol></div><h1 class="post-title">Swift笔记（一） 基础知识</h1><div class="post-info">2015年6月25日<span class="tags-info"><a href="/tags/Swift/" class="tag-link">Swift</a><a href="/tags/iOS/" class="tag-link">iOS</a></span></div><div class="post-content"><h2 id="简单值"><a href="#简单值" class="headerlink" title="简单值"></a>简单值</h2><p>在Swift文件中，全局作用域的代码会被自动当做程序的入口点，所以不需要main函数。<br>也不需要在每个语句结尾写上分号，除非在同一行内写多条独立的语句</p>
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Swift笔记（一） 基础知识 · Snowgan</title><meta name="description" content="Swift笔记（一） 基础知识 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism-duotone-dark.css" type="text/css">
+<link rel="stylesheet" href="/css/prism-line-numbers.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/iOS/" class="bread-crumb-item">iOS</a></div><article class="post-block"><div class="post-toc"><div class="toc-title">目录</div><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#简单值"><span class="toc-text">简单值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#控制流"><span class="toc-text">控制流</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typealias"><span class="toc-text">typealias</span></a></li></ol></div><h1 class="post-title">Swift笔记（一） 基础知识</h1><div class="post-info">2015年6月25日<span class="tags-info"><a href="/tags/Swift/" class="tag-link">Swift</a><a href="/tags/iOS/" class="tag-link">iOS</a></span></div><div class="post-content"><h2 id="简单值"><a href="#简单值" class="headerlink" title="简单值"></a>简单值</h2><p>在Swift文件中，全局作用域的代码会被自动当做程序的入口点，所以不需要main函数。<br>也不需要在每个语句结尾写上分号，除非在同一行内写多条独立的语句</p>
 <p><strong>基本类型</strong>： <code>Int</code>, <code>Float</code>, <code>Double</code>, <code>Bool</code>, <code>Array</code>, <code>Dictionary</code></p>
 <blockquote>
 <p>关于Array和Dictionary:<br>不同于obj-C的NSAaary和NSDictionary，Swift的Array和Dictionary是基本类型而不是对象，但两者在大部分情况下是可直接互换的</p>
 </blockquote>
 <p><strong>声明方式</strong><br>使用let来声明常量，使用var来声明变量。  </p>
-<pre class=" language-Swift"><code class="language-Swift">var myVariable = 42
+<pre class="line-numbers language-Swift"><code class="language-Swift">var myVariable = 42
 myVariable = 50
 let myConstant = 42
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <a id="more"></a>
 <p>一个常量的值，在编译的时候，并不需要有明确的值，但是你只能为它赋值一次。如果一个值在后续使用中不会改变，则声明为常量，否则声明为变量。</p>
 <p>Swift是一种类型安全（type safe）的语言，每个值都必须有确定的类型，但声明时类型是可选的：  </p>
@@ -15,22 +16,22 @@ let myConstant = 42
 <li>如果声明的同时赋值，编译器会自动推断类型。  </li>
 <li>如果初始值没有提供足够的信息（或者没有初始值），就需要在变量后面声明类型，在常量或者变量名后面加上一个冒号和空格，然后加上类型名称。  </li>
 </ul>
-<pre class=" language-Swift"><code class="language-Swift">let implicitInteger = 70
+<pre class="line-numbers language-Swift"><code class="language-Swift">let implicitInteger = 70
 let implicitDouble = 70.0
 // 自动类型推断会认定为Double类型，若要声明Float类型，需显示声明类型
 let explicitDouble: Double = 70
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <p>值永远不会被隐式转换为其他类型。如果你需要把一个值转换成其他类型，请显式转换。如下例子若去掉显示转换的String，则会编译报错：</p>
-<pre class=" language-Swift"><code class="language-Swift">let label = "The width is"
+<pre class="line-numbers language-Swift"><code class="language-Swift">let label = "The width is"
 let width = 94
 let widthLabel = label + String(width)
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 <p>有一种更简单的把值转换成字符串的方法：把值写到括号中，并且在括号之前写一个反斜杠。例如：</p>
-<pre class=" language-Swift"><code class="language-Swift">let apples = 3
+<pre class="line-numbers language-Swift"><code class="language-Swift">let apples = 3
 let oranges = 5
 let appleSummary = "I have \(apples) apples."
 let fruitSummary = "I have \(apples + oranges) pieces of fruit."
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="控制流"><a href="#控制流" class="headerlink" title="控制流"></a>控制流</h2><p>条件判断：<code>if-else</code> 和 <code>switch</code><br>循环：<code>for-in</code>、 <code>for</code>、 <code>while</code> 和 <code>do-while</code>  </p>
 <blockquote>
 <p>NOTE:<br>在Swift2.0中将<code>do-while</code>改为了<code>repeat-while</code>  </p>
@@ -38,7 +39,7 @@ let fruitSummary = "I have \(apples + oranges) pieces of fruit."
 <p>条件语句的括号是可选的，执行语句主体写在花括号内</p>
 <p>if判断条件必须是一个Bool表达式，因为值不能隐式转换类型，所以如<code>if condition { … }</code>这样的写法中若condition不是一个Bool类型都会报错</p>
 <p>switch中的case语句若覆盖了所有情况，则可省略default语句；<br>匹配到任一条case语句执行后会直接跳出switch，不会继续执行后续case语句，所以不需要在每条case代码后加上break。</p>
-<pre class=" language-Swift"><code class="language-Swift">let vegetable = "red pepper"
+<pre class="line-numbers language-Swift"><code class="language-Swift">let vegetable = "red pepper"
 switch vegetable {
 case "celery":
     let vegetableComment = "Add some raisins and make ants on a log."
@@ -49,14 +50,14 @@ case let x where x.hasSuffix("pepper"):
 default:
     let vegetableComment = "Everything tastes good in soup."
 }
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <h2 id="typealias"><a href="#typealias" class="headerlink" title="typealias"></a>typealias</h2><p>使用typealias关键字来定义类型别名。  </p>
-<pre class=" language-Swift"><code class="language-Swift">typealias AudioSample = UInt16
-</code></pre>
+<pre class="line-numbers language-Swift"><code class="language-Swift">typealias AudioSample = UInt16
+<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>定义了一个类型别名之后，可以在任何使用原始名的地方使用别名。<br>下例中，AudioSample被定义为UInt16的一个别名。因为它是别名，AudioSample.min实际上是UInt16.min，所以会给maxAmplitudeFound赋一个初值0。</p>
-<pre class=" language-Swift"><code class="language-Swift">var maxAmplitudeFound = AudioSample.min
+<pre class="line-numbers language-Swift"><code class="language-Swift">var maxAmplitudeFound = AudioSample.min
 // maxAmplitudeFound 现在是 0
-</code></pre>
+<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 </div></article></div></section><footer><div class="paginator"><a href="/2016/11/21/JavaScript基本类型/" class="prev">&lt;&lt;上一篇: JavaScript基本类型</a><a href="/2015/06/25/Swift-KVO模式/" class="next">下一篇: Swift KVO模式>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2015/06/25/Swift笔记（一）-基础知识/';
     this.page.identifier = '2015/06/25/Swift笔记（一）-基础知识/';
