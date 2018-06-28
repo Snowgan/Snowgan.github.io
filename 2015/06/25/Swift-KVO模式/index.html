@@ -1,18 +1,101 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Swift KVO模式 · Snowgan</title><meta name="description" content="Swift KVO模式 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/iOS/" class="bread-crumb-item">iOS</a></div><article class="post-block"><h1 class="post-title">Swift KVO模式</h1><div class="post-info">2015年6月25日<span class="tags-info"><a href="/tags/Swift/" class="tag-link">Swift</a></span></div><div class="post-content"><p>KVO(Key-Value Observing)是一种观察者模式。继承自NSObject的对象可以注册监听任何属性的变化，并指定观察者对象。<br>注册监听属性的方法<code>addObserver:forKeyPath:options:context:</code></p>
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Swift KVO模式 · Snowgan</title><meta name="description" content="Swift KVO模式 - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/iOS/" class="bread-crumb-item">iOS</a></div><article class="post-block"><h1 class="post-title">Swift KVO模式</h1><div class="post-info">2015年6月25日<span class="tags-info"><a href="/tags/Swift/" class="tag-link">Swift</a></span></div><div class="post-content"><p>KVO(Key-Value Observing)是一种观察者模式。继承自NSObject的对象可以注册监听任何属性的变化，并指定观察者对象。<br>注册监听属性的方法<code>addObserver:forKeyPath:options:context:</code></p>
 <blockquote>
 <p>注：被监听属性要用dynamic关键字修饰</p>
 </blockquote>
 <p>方法声明： </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">addObserver</span><span class="params">(<span class="number">_</span> anObserver: NSObject, //指定观察者对象</span></span></div><div class="line"><span class="function"><span class="params">           forKeyPath keyPath: String, //指定要监听的属性</span></span></div><div class="line"><span class="function"><span class="params">              options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据</span></span></div><div class="line"><span class="function"><span class="params">              context context: UnsafeMutablePointer&lt;Void&gt; //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件</span></span></div><div class="line"><span class="function"><span class="params">)</span></span></div></pre></td></tr></table></figure>
+<pre class=" language-Swift"><code class="language-Swift">func addObserver(_ anObserver: NSObject, //指定观察者对象
+           forKeyPath keyPath: String, //指定要监听的属性
+              options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据
+              context context: UnsafeMutablePointer<Void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
+)
+</code></pre>
 <a id="more"></a>
 <p>其中options参数类型NSKeyValueObservingOptions是一个结构体，包含四个属性。<br>定义： </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">struct</span> <span class="title">NSKeyValueObservingOptions</span> : <span class="title">RawOptionSetType</span> </span>&#123;</div><div class="line">    <span class="keyword">init</span>(<span class="number">_</span> rawValue: <span class="type">UInt</span>)</div><div class="line">    <span class="keyword">init</span>(rawValue rawValue: <span class="type">UInt</span>)</div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">New</span>: <span class="type">NSKeyValueObservingOptions</span> &#123; <span class="keyword">get</span> &#125; <span class="comment">// change字典里包含新值</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">Old</span>: <span class="type">NSKeyValueObservingOptions</span> &#123; <span class="keyword">get</span> &#125; <span class="comment">// change字典里包含旧值</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">Initial</span>: <span class="type">NSKeyValueObservingOptions</span> &#123; <span class="keyword">get</span> &#125; <span class="comment">// 在注册监听的时候就会立即发送消息给观察者</span></div><div class="line">    <span class="keyword">static</span> <span class="keyword">var</span> <span class="type">Prior</span>: <span class="type">NSKeyValueObservingOptions</span> &#123; <span class="keyword">get</span> &#125; <span class="comment">// 在监听的属性变化前后各发送一次消息给观察者</span></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<pre class=" language-Swift"><code class="language-Swift">struct NSKeyValueObservingOptions : RawOptionSetType {
+    init(_ rawValue: UInt)
+    init(rawValue rawValue: UInt)
+    static var New: NSKeyValueObservingOptions { get } // change字典里包含新值
+    static var Old: NSKeyValueObservingOptions { get } // change字典里包含旧值
+    static var Initial: NSKeyValueObservingOptions { get } // 在注册监听的时候就会立即发送消息给观察者
+    static var Prior: NSKeyValueObservingOptions { get } // 在监听的属性变化前后各发送一次消息给观察者
+}
+</code></pre>
 <p>当监听的属性发生变化时，会向观察者发送<code>observeValueForKeyPath:ofObject:change:context:</code>消息，观察者可以重写该方法以实现自定义行为。<br>方法声明：  </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">observeValueForKeyPath</span><span class="params">(<span class="number">_</span> keyPath: String,</span></span></div><div class="line"><span class="function"><span class="params">                      ofObject object: AnyObject,</span></span></div><div class="line"><span class="function"><span class="params">                        change change: [NSObject : AnyObject],</span></span></div><div class="line"><span class="function"><span class="params">                      context context: UnsafeMutablePointer&lt;Void&gt;)</span></span></div></pre></td></tr></table></figure>
+<pre class=" language-Swift"><code class="language-Swift">func observeValueForKeyPath(_ keyPath: String,
+                      ofObject object: AnyObject,
+                        change change: [NSObject : AnyObject],
+                      context context: UnsafeMutablePointer<Void>)
+</code></pre>
 <p>观察者被释放前需要取消监听，否则消息发送给一个已销毁的对象会造成程序崩溃<br>方法声明：  </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> anObserver: NSObject,</span></span></div><div class="line"><span class="function"><span class="params">              forKeyPath keyPath: String)</span></span></div><div class="line"></div><div class="line"><span class="function"><span class="keyword">func</span> <span class="title">removeObserver</span><span class="params">(<span class="number">_</span> observer: NSObject,</span></span></div><div class="line"><span class="function"><span class="params">            forKeyPath keyPath: String,</span></span></div><div class="line"><span class="function"><span class="params">               context context: UnsafeMutablePointer&lt;Void&gt;)</span></span></div></pre></td></tr></table></figure>
+<pre class=" language-Swift"><code class="language-Swift">func removeObserver(_ anObserver: NSObject,
+              forKeyPath keyPath: String)
+
+func removeObserver(_ observer: NSObject,
+            forKeyPath keyPath: String,
+               context context: UnsafeMutablePointer<Void>)
+</code></pre>
 <p>示例：当用户点击“Like”按钮，label的数字会相应加1，相当于一个点赞计数的功能  </p>
-<figure class="highlight swift"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">import</span> UIKit</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Like</span>: <span class="title">NSObject</span> </span>&#123;</div><div class="line">    <span class="keyword">dynamic</span> <span class="keyword">var</span> <span class="built_in">count</span>: <span class="type">Int</span></div><div class="line">    <span class="keyword">init</span>(<span class="built_in">count</span>: <span class="type">Int</span>) &#123;</div><div class="line">        <span class="keyword">self</span>.<span class="built_in">count</span> = <span class="built_in">count</span></div><div class="line">    &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">ViewController</span>: <span class="title">UIViewController</span> </span>&#123;</div><div class="line">    <span class="keyword">var</span> like = <span class="type">Like</span>(<span class="built_in">count</span>: <span class="number">0</span>)</div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">viewDidLoad</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">super</span>.viewDidLoad()</div><div class="line">        <span class="comment">// 注册监听事件</span></div><div class="line">        like.addObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"count"</span>, options: <span class="literal">nil</span>, context: <span class="literal">nil</span>)</div><div class="line"></div><div class="line">        setupLabel()</div><div class="line">        setupButton()</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupLabel</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> label = <span class="type">UILabel</span>()</div><div class="line">        label.bounds.size = <span class="type">CGSize</span>(width: <span class="number">20</span>, height: <span class="number">20</span>)</div><div class="line">        label.tag = <span class="number">1</span></div><div class="line">        label.backgroundColor = <span class="type">UIColor</span>.yellowColor()</div><div class="line">        label.text = <span class="string">"\(like.count)"</span></div><div class="line">        label.autoresizingMask = .<span class="type">FlexibleWidth</span></div><div class="line">        view.addSubview(label)</div><div class="line">        label.setTranslatesAutoresizingMaskIntoConstraints(<span class="literal">false</span>)</div><div class="line">        view.addConstraint(<span class="type">NSLayoutConstraint</span>(item: label, attribute: .<span class="type">CenterX</span>, relatedBy: .<span class="type">Equal</span>, toItem: view, attribute: .<span class="type">CenterX</span>, multiplier: <span class="number">1</span>, constant: <span class="number">0</span>))</div><div class="line">        view.addConstraint(<span class="type">NSLayoutConstraint</span>(item: label, attribute: .<span class="type">CenterY</span>, relatedBy: .<span class="type">Equal</span>, toItem: view, attribute: .<span class="type">CenterY</span>, multiplier: <span class="number">1</span>, constant: <span class="number">0</span>))</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">setupButton</span><span class="params">()</span></span> &#123;</div><div class="line">        <span class="keyword">let</span> button = <span class="type">UIButton</span>.buttonWithType(<span class="type">UIButtonType</span>.<span class="type">System</span>) <span class="keyword">as</span>! <span class="type">UIButton</span></div><div class="line">        button.tag = <span class="number">2</span></div><div class="line">        button.setTitle(<span class="string">"Like"</span>, forState: <span class="type">UIControlState</span>.<span class="type">Normal</span>)</div><div class="line">        view.addSubview(button)</div><div class="line">        button.setTranslatesAutoresizingMaskIntoConstraints(<span class="literal">false</span>)</div><div class="line">        view.addConstraint(<span class="type">NSLayoutConstraint</span>(item: button, attribute: .<span class="type">Top</span>, relatedBy: .<span class="type">Equal</span>, toItem: view.viewWithTag(<span class="number">1</span>), attribute: .<span class="type">Bottom</span>, multiplier: <span class="number">1</span>, constant: <span class="number">10</span>))</div><div class="line">        view.addConstraint(<span class="type">NSLayoutConstraint</span>(item: button, attribute: .<span class="type">CenterX</span>, relatedBy: .<span class="type">Equal</span>, toItem: view, attribute: .<span class="type">CenterX</span>, multiplier: <span class="number">1</span>, constant: <span class="number">0</span>))</div><div class="line">        button.addTarget(<span class="keyword">self</span>, action: <span class="string">"buttonPressed"</span>, forControlEvents: <span class="type">UIControlEvents</span>.<span class="type">TouchUpInside</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="function"><span class="keyword">func</span> <span class="title">buttonPressed</span><span class="params">()</span></span> &#123;</div><div class="line">        like.<span class="built_in">count</span>++</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">override</span> <span class="function"><span class="keyword">func</span> <span class="title">observeValueForKeyPath</span><span class="params">(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer&lt;Void&gt;)</span></span> &#123;</div><div class="line">        <span class="keyword">if</span> <span class="keyword">let</span> label = (view.viewWithTag(<span class="number">1</span>) <span class="keyword">as</span>? <span class="type">UILabel</span>) &#123;</div><div class="line">            label.text = <span class="string">"\(like.count)"</span></div><div class="line">        &#125;</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">deinit</span> &#123;</div><div class="line">        like.removeObserver(<span class="keyword">self</span>, forKeyPath: <span class="string">"count"</span>)</div><div class="line">    &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure></div></article></div></section><footer><div class="paginator"><a href="/2015/06/25/Swift笔记（一）-基础知识/" class="prev">&lt;&lt;上一篇: Swift笔记（一） 基础知识</a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+<pre class=" language-Swift"><code class="language-Swift">import UIKit
+
+class Like: NSObject {
+    dynamic var count: Int
+    init(count: Int) {
+        self.count = count
+    }
+}
+
+class ViewController: UIViewController {
+    var like = Like(count: 0)
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // 注册监听事件
+        like.addObserver(self, forKeyPath: "count", options: nil, context: nil)
+
+        setupLabel()
+        setupButton()
+    }
+
+    func setupLabel() {
+        let label = UILabel()
+        label.bounds.size = CGSize(width: 20, height: 20)
+        label.tag = 1
+        label.backgroundColor = UIColor.yellowColor()
+        label.text = "\(like.count)"
+        label.autoresizingMask = .FlexibleWidth
+        view.addSubview(label)
+        label.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addConstraint(NSLayoutConstraint(item: label, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+        view.addConstraint(NSLayoutConstraint(item: label, attribute: .CenterY, relatedBy: .Equal, toItem: view, attribute: .CenterY, multiplier: 1, constant: 0))
+    }
+
+    func setupButton() {
+        let button = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        button.tag = 2
+        button.setTitle("Like", forState: UIControlState.Normal)
+        view.addSubview(button)
+        button.setTranslatesAutoresizingMaskIntoConstraints(false)
+        view.addConstraint(NSLayoutConstraint(item: button, attribute: .Top, relatedBy: .Equal, toItem: view.viewWithTag(1), attribute: .Bottom, multiplier: 1, constant: 10))
+        view.addConstraint(NSLayoutConstraint(item: button, attribute: .CenterX, relatedBy: .Equal, toItem: view, attribute: .CenterX, multiplier: 1, constant: 0))
+        button.addTarget(self, action: "buttonPressed", forControlEvents: UIControlEvents.TouchUpInside)
+    }
+
+    func buttonPressed() {
+        like.count++
+    }
+
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if let label = (view.viewWithTag(1) as? UILabel) {
+            label.text = "\(like.count)"
+        }
+    }
+
+    deinit {
+        like.removeObserver(self, forKeyPath: "count")
+    }
+
+}
+</code></pre>
+</div></article></div></section><footer><div class="paginator"><a href="/2015/06/25/Swift笔记（一）-基础知识/" class="prev">&lt;&lt;上一篇: Swift笔记（一） 基础知识</a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2015/06/25/Swift-KVO模式/';
     this.page.identifier = '2015/06/25/Swift-KVO模式/';
 };

@@ -1,4 +1,4 @@
-<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Start Mongod · Snowgan</title><meta name="description" content="Start Mongod - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Database/" class="bread-crumb-item">Database</a>/<a href="/categories/Database/MongoDB/" class="bread-crumb-item">MongoDB</a></div><article class="post-block"><h1 class="post-title">Start Mongod</h1><div class="post-info">Jan 11, 2018<span class="tags-info"><a href="/tags/MongoDB/" class="tag-link">MongoDB</a><a href="/tags/mongod/" class="tag-link">mongod</a></span></div><div class="post-content"><p>To use MongoDB, we need to start the <strong>mongod</strong> deamon process. It handles data requests, manages data access, and performs background management operations.</p>
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Start Mongod · Snowgan</title><meta name="description" content="Start Mongod - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Database/" class="bread-crumb-item">Database</a>/<a href="/categories/Database/MongoDB/" class="bread-crumb-item">MongoDB</a></div><article class="post-block"><h1 class="post-title">Start Mongod</h1><div class="post-info">Jan 11, 2018<span class="tags-info"><a href="/tags/MongoDB/" class="tag-link">MongoDB</a><a href="/tags/mongod/" class="tag-link">mongod</a></span></div><div class="post-content"><p>To use MongoDB, we need to start the <strong>mongod</strong> deamon process. It handles data requests, manages data access, and performs background management operations.</p>
 <p>We can simply start it use command <code>mongod</code>, and it will use the default setting to running mongod.</p>
 <p>Or we can set custom configuration using command line options or configuration file(the default file is in /etc/mongod.conf).</p>
 <a id="more"></a>
@@ -9,9 +9,37 @@
 <li>listens to connections from the IP address <code>192.168.103.100</code> and <code>localhost</code></li>
 <li>uses authentication</li>
 </ul>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># use command line</span></div><div class="line">mongod --port 27000 --dbpath /data/db/ --logpath /data/<span class="built_in">log</span>/mongod.log --bind_ip <span class="string">"127.0.0.</span></div><div class="line"><span class="string">1,192.168.103.100"</span> --auth</div><div class="line"></div><div class="line"><span class="comment"># use configuration file</span></div><div class="line">mongod --config /data/mongod.conf</div><div class="line"><span class="comment"># /data/mongod.conf content</span></div><div class="line"></div><div class="line"><span class="comment"># Where and how to store data.</span></div><div class="line">storage:</div><div class="line">  dbPath: /data/db</div><div class="line">  journal:</div><div class="line">    enabled: <span class="literal">true</span></div><div class="line"></div><div class="line"><span class="comment"># where to write logging data.</span></div><div class="line">systemLog:</div><div class="line">  destination: file</div><div class="line">  logAppend: <span class="literal">true</span></div><div class="line">  path: /data/<span class="built_in">log</span>/mongod.log</div><div class="line"></div><div class="line"><span class="comment"># network interfaces</span></div><div class="line">net:</div><div class="line">  port: 27000</div><div class="line">  bindIp: 127.0.0.1,192.168.103.100</div><div class="line"></div><div class="line"><span class="comment"># Enables authorization to control user’s access to database resources and operations</span></div><div class="line">security:</div><div class="line">  authorization: enabled</div></pre></td></tr></table></figure>
-<p>Refer this <a href="https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod" target="_blank" rel="external">reference</a> for full command line options. </p>
-<p>Refer this <a href="https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank" rel="external">reference</a> for configuration file setting.</p>
+<pre class=" language-bash"><code class="language-bash"><span class="token comment" spellcheck="true"># use command line</span>
+mongod --port 27000 --dbpath /data/db/ --logpath /data/log/mongod.log --bind_ip <span class="token string">"127.0.0.
+1,192.168.103.100"</span> --auth
+
+<span class="token comment" spellcheck="true"># use configuration file</span>
+mongod --config /data/mongod.conf
+<span class="token comment" spellcheck="true"># /data/mongod.conf content</span>
+
+<span class="token comment" spellcheck="true"># Where and how to store data.</span>
+storage:
+  dbPath: /data/db
+  journal:
+    enabled: <span class="token boolean">true</span>
+
+<span class="token comment" spellcheck="true"># where to write logging data.</span>
+systemLog:
+  destination: <span class="token function">file</span>
+  logAppend: <span class="token boolean">true</span>
+  path: /data/log/mongod.log
+
+<span class="token comment" spellcheck="true"># network interfaces</span>
+net:
+  port: 27000
+  bindIp: 127.0.0.1,192.168.103.100
+
+<span class="token comment" spellcheck="true"># Enables authorization to control user’s access to database resources and operations</span>
+security:
+  authorization: enabled
+</code></pre>
+<p>Refer this <a href="https://docs.mongodb.com/manual/reference/program/mongod/#bin.mongod" target="_blank" rel="noopener">reference</a> for full command line options. </p>
+<p>Refer this <a href="https://docs.mongodb.com/manual/reference/configuration-options/" target="_blank" rel="noopener">reference</a> for configuration file setting.</p>
 <p>And then we can connect mongodb from localhost or 192.168.103.100 to the server <code>hostname:27000</code> on which mongod is running.</p>
 </div></article></div></section><footer><div class="paginator"><a href="/2018/01/19/MongoDB Shell - Query Documents/" class="prev">&lt;&lt;PREV: MongoDB Shell - Query Documents</a><a href="/2018/01/10/Install MongoDB on Debian 9/" class="next">NEXT: Install MongoDB on Debian 9>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2018/01/11/Start Mongod/';
