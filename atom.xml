@@ -611,6 +611,51 @@
   </entry>
   
   <entry>
+    <title>React学习笔记</title>
+    <link href="http://snowgan.com/2016/12/16/React%E7%AC%94%E8%AE%B0/"/>
+    <id>http://snowgan.com/2016/12/16/React笔记/</id>
+    <published>2016-12-16T14:00:00.000Z</published>
+    <updated>2018-06-28T15:15:21.187Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-JSX语法"><a href="#1-JSX语法" class="headerlink" title="1. JSX语法"></a>1. JSX语法</h3><p>JSX是对JavaScript的拓展，采用HTML和JavaScript混写的语法，当遇到<strong>&lt;</strong>，JSX就当HTML解析，遇到<strong>{</strong>就当JavaScript解析</p>
+<p>JSX的HTML写法与调用React.createElement(component, props, …children)函数的效果是一样的</p>
+<a id="more"></a>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1 两种写法是一样的</span></div><div class="line">&lt;MyButton color=<span class="string">"blue"</span> shadowSize=&#123;<span class="number">2</span>&#125;&gt;</div><div class="line">  Click Me</div><div class="line">&lt;<span class="regexp">/MyButton&gt;</span></div><div class="line"><span class="regexp">/</span><span class="regexp">/ 2  </span></div><div class="line"><span class="regexp">React.createElement(</span></div><div class="line"><span class="regexp">  MyButton,</span></div><div class="line"><span class="regexp">  &#123;color: 'blue', shadowSize: 2&#125;,</span></div><div class="line"><span class="regexp">  'Click Me'</span></div><div class="line"><span class="regexp">)</span></div></pre></td></tr></table></figure>
+<p>若要将一个对象当做props属性传递给组件，可使用{…props}语法</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="comment">// 1 两种写法是一样的</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">App1</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &lt;Greeting firstName="Ben" lastName="Hector" /&gt;;</div><div class="line">&#125;</div><div class="line">// 2</div><div class="line">function App2() &#123;</div><div class="line">  const props = &#123;firstName: 'Ben', lastName: 'Hector'&#125;;</div><div class="line">  return &lt;Greeting &#123;...props&#125; /&gt;;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="2-React组件"><a href="#2-React组件" class="headerlink" title="2 React组件"></a>2 React组件</h3><h4 id="2-1-基本使用"><a href="#2-1-基本使用" class="headerlink" title="2.1 基本使用"></a>2.1 基本使用</h4><p>定义组件可采用函数声明形式，也可使用class继承React.Component</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Welcome</span>(<span class="params">props</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;props.name&#125;&lt;/h1&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">Welcome</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;h1&gt;Hello, &#123;this.props.name&#125;&lt;/h1&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 组件使用</span></div><div class="line"><span class="keyword">const</span> element = &lt;Welcome name="Sara" /&gt;;</div><div class="line">ReactDOM.render(</div><div class="line">  element,</div><div class="line">  document.getElementById('root')</div><div class="line">);</div></pre></td></tr></table></figure>
+<p>每个组件都有一个state和props对象，这两个对象的变化会触发组件重新渲染</p>
+<p>初始化state对象使用getInitialState函数，用class方式则在constructor中初始化</p>
+<p>不能直接更新state对象，要调用setState函数进行更新，将传入setState函数的参数合并到当前state对象中</p>
+<h4 id="2-2-事件处理"><a href="#2-2-事件处理" class="headerlink" title="2.2 事件处理"></a>2.2 事件处理</h4><p>在JSX中调用事件函数时注意不要加引号</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAction</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  handleFunc() &#123;</div><div class="line">    <span class="comment">// click事件发生时的处理逻辑</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;button onClick=&#123;handleFunc&#125;&gt;Action&lt;/button&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>事件函数中的this陷阱：</p>
+<p>如果直接调用事件函数，若不事先处理，事件函数中的this为undefined，而不是MyAction对象，所以要在组件初始化时矫正this指向</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div></pre></td><td class="code"><pre><div class="line"><span class="class"><span class="keyword">class</span> <span class="title">MyAction</span> <span class="keyword">extends</span> <span class="title">React</span>.<span class="title">Component</span> </span>&#123;</div><div class="line">  <span class="keyword">constructor</span>() &#123;</div><div class="line">    <span class="keyword">super</span>();</div><div class="line">    <span class="comment">// 将handleFunc中的this指向组件对象自身</span></div><div class="line">    <span class="keyword">this</span>.handleFunc = <span class="keyword">this</span>.handleFunc.bind(<span class="keyword">this</span>);</div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  handleFunc() &#123;</div><div class="line">    <span class="comment">// click事件发生时的处理逻辑</span></div><div class="line">  &#125;</div><div class="line">  </div><div class="line">  render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;button onClick=&#123;handleFunc&#125;&gt;Action&lt;/button&gt;;</div><div class="line">  &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>若不想在初始化中做this矫正，也可在调用事件函数做下变动</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">render() &#123;</div><div class="line">    <span class="keyword">return</span> &lt;button onClick=&#123;(e) =&gt; this.handleFunc(e)&#125;&gt;Action&lt;/button&gt;;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// 或者更改事件函数声明方式</span></div><div class="line">handleFunc = <span class="function"><span class="params">()</span> =&gt;</span> &#123;&#125;</div></pre></td></tr></table></figure>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-JSX语法&quot;&gt;&lt;a href=&quot;#1-JSX语法&quot; class=&quot;headerlink&quot; title=&quot;1. JSX语法&quot;&gt;&lt;/a&gt;1. JSX语法&lt;/h3&gt;&lt;p&gt;JSX是对JavaScript的拓展，采用HTML和JavaScript混写的语法，当遇到&lt;strong&gt;&amp;lt;&lt;/strong&gt;，JSX就当HTML解析，遇到&lt;strong&gt;{&lt;/strong&gt;就当JavaScript解析&lt;/p&gt;
+&lt;p&gt;JSX的HTML写法与调用React.createElement(component, props, …children)函数的效果是一样的&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Front-End" scheme="http://snowgan.com/categories/Front-End/"/>
+    
+      <category term="React" scheme="http://snowgan.com/categories/Front-End/React/"/>
+    
+    
+      <category term="Basic" scheme="http://snowgan.com/tags/Basic/"/>
+    
+      <category term="React" scheme="http://snowgan.com/tags/React/"/>
+    
+  </entry>
+  
+  <entry>
     <title>JavaScript中的this笔记</title>
     <link href="http://snowgan.com/2016/12/09/JavaScript%E4%B8%AD%E7%9A%84this%E7%AC%94%E8%AE%B0/"/>
     <id>http://snowgan.com/2016/12/09/JavaScript中的this笔记/</id>
