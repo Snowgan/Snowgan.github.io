@@ -4,17 +4,17 @@
 <p>关于Array和Dictionary:<br>不同于obj-C的NSAaary和NSDictionary，Swift的Array和Dictionary是基本类型而不是对象，但两者在大部分情况下是可直接互换的</p>
 </blockquote>
 <p><strong>声明方式</strong><br>使用let来声明常量，使用var来声明变量。  </p>
-<pre><code class="swift">var myVariable = 42
-myVariable = 50
-let myConstant = 42
+<pre class=" language-swift"><code class="language-swift"><span class="token keyword">var</span> myVariable <span class="token operator">=</span> <span class="token number">42</span>
+myVariable <span class="token operator">=</span> <span class="token number">50</span>
+<span class="token keyword">let</span> myConstant <span class="token operator">=</span> <span class="token number">42</span>
 </code></pre></div><a href="/2015/06/25/Swift笔记（一）-基础知识/" class="read-more">阅读全文>></a></article></li><li class="post-list-item"><article class="post-block"><h2 class="post-title"><a href="/2015/06/25/Swift-KVO模式/" class="post-title-link">Swift KVO模式</a></h2><div class="post-info">2015年6月25日<span class="tags-info"><a href="/tags/Swift/" class="tag-link">Swift</a></span></div><div class="post-content"><p>KVO(Key-Value Observing)是一种观察者模式。继承自NSObject的对象可以注册监听任何属性的变化，并指定观察者对象。<br>注册监听属性的方法<code>addObserver:forKeyPath:options:context:</code></p>
 <blockquote>
 <p>注：被监听属性要用dynamic关键字修饰</p>
 </blockquote>
 <p>方法声明： </p>
-<pre><code class="Swift">func addObserver(_ anObserver: NSObject, //指定观察者对象
+<pre class=" language-Swift"><code class="language-Swift">func addObserver(_ anObserver: NSObject, //指定观察者对象
            forKeyPath keyPath: String, //指定要监听的属性
               options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据
-              context context: UnsafeMutablePointer&lt;Void&gt; //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
+              context context: UnsafeMutablePointer<void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
 )
-</code></pre></div><a href="/2015/06/25/Swift-KVO模式/" class="read-more">阅读全文>></a></article></li></ul></section><footer><div class="copyright"><p>© 2015 - 2018 <a href="http://snowgan.com">Snowgan</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-90028164-1', 'auto');ga('send', 'pageview');</script></body></html>
+</void></code></pre></div><a href="/2015/06/25/Swift-KVO模式/" class="read-more">阅读全文>></a></article></li></ul></section><footer><div class="copyright"><p>© 2015 - 2018 <a href="http://snowgan.com">Snowgan</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-90028164-1', 'auto');ga('send', 'pageview');</script></body></html>

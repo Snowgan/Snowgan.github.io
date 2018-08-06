@@ -6,9 +6,9 @@
 <pre class=" language-Swift"><code class="language-Swift">func addObserver(_ anObserver: NSObject, //指定观察者对象
            forKeyPath keyPath: String, //指定要监听的属性
               options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据
-              context context: UnsafeMutablePointer<Void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
+              context context: UnsafeMutablePointer<void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
 )
-</code></pre>
+</void></code></pre>
 <a id="more"></a>
 <p>其中options参数类型NSKeyValueObservingOptions是一个结构体，包含四个属性。<br>定义： </p>
 <pre class=" language-Swift"><code class="language-Swift">struct NSKeyValueObservingOptions : RawOptionSetType {
@@ -24,16 +24,16 @@
 <pre class=" language-Swift"><code class="language-Swift">func observeValueForKeyPath(_ keyPath: String,
                       ofObject object: AnyObject,
                         change change: [NSObject : AnyObject],
-                      context context: UnsafeMutablePointer<Void>)
-</code></pre>
+                      context context: UnsafeMutablePointer<void>)
+</void></code></pre>
 <p>观察者被释放前需要取消监听，否则消息发送给一个已销毁的对象会造成程序崩溃<br>方法声明：  </p>
 <pre class=" language-Swift"><code class="language-Swift">func removeObserver(_ anObserver: NSObject,
               forKeyPath keyPath: String)
 
 func removeObserver(_ observer: NSObject,
             forKeyPath keyPath: String,
-               context context: UnsafeMutablePointer<Void>)
-</code></pre>
+               context context: UnsafeMutablePointer<void>)
+</void></code></pre>
 <p>示例：当用户点击“Like”按钮，label的数字会相应加1，相当于一个点赞计数的功能  </p>
 <pre class=" language-Swift"><code class="language-Swift">import UIKit
 
@@ -83,7 +83,7 @@ class ViewController: UIViewController {
         like.count++
     }
 
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<void>) {
         if let label = (view.viewWithTag(1) as? UILabel) {
             label.text = "\(like.count)"
         }
@@ -94,7 +94,7 @@ class ViewController: UIViewController {
     }
 
 }
-</code></pre>
+</void></code></pre>
 </div></article></div></section><footer><div class="paginator"><a href="/2015/06/25/Swift笔记（一）-基础知识/" class="prev">&lt;&lt;上一篇: Swift笔记（一） 基础知识</a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
     this.page.url = 'http://snowgan.com/2015/06/25/Swift-KVO模式/';
     this.page.identifier = '2015/06/25/Swift-KVO模式/';

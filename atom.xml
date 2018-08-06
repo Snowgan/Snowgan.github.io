@@ -177,13 +177,13 @@ db.movie.find<span class="token punctuation">(</span><span class="token punctuat
       &lt;p&gt;&lt;code&gt;find(query, projection)&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;The find method is used to query documents in a collection and return a cursor to the selected documents.&lt;/p&gt;
 &lt;h3 id=&quot;Select-all&quot;&gt;&lt;a href=&quot;#Select-all&quot; class=&quot;headerlink&quot; title=&quot;Select all&quot;&gt;&lt;/a&gt;Select all&lt;/h3&gt;&lt;p&gt;Pass an empty object as the query filter to select all documents in the collection.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;db.collectionName.find( {} )
+&lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;db.collectionName.find&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 
-# use .count() to show the size of selected documents
-db.collectionName.find( {} ).count()
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;# use .count() to show the size of selected documents&lt;/span&gt;
+db.collectionName.find&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;.count&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 
-# use .pretty() to print the result friendly
-db.collectionName.find( {} ).pretty()
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;# use .pretty() to print the result friendly&lt;/span&gt;
+db.collectionName.find&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;.pretty&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
@@ -316,11 +316,11 @@ dpkg --install libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb
     
       &lt;p&gt;According to official document of current version(3.6), MongoDB only provides packages for 64-bit builds of Debian 7 and 8.&lt;/p&gt;
 &lt;p&gt;If we want to install MongoDB on Debian 9, need to install libssl1.0.0 first.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;bash&quot;&gt;# Obtain the package of libssl1.0.0
-wget http://security.debian.org/debian-security/pool/updates/m
+&lt;pre class=&quot; language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;# Obtain the package of libssl1.0.0&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;wget&lt;/span&gt; http://security.debian.org/debian-security/pool/updates/m
 ain/o/openssl/libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb
 
-# Install libssl1.0.0
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;# Install libssl1.0.0&lt;/span&gt;
 dpkg --install libssl1.0.0_1.0.1t-1+deb8u8_amd64.deb
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;Then install MongoDB with official &lt;a href=&quot;https://docs.mongodb.com/manual/tutorial/install-mongodb-on-debian/&quot; target=&quot;_blank&quot; rel=&quot;noopener&quot;&gt;guideline&lt;/a&gt;.&lt;/p&gt;
@@ -976,21 +976,21 @@ console<span class="token punctuation">.</span><span class="token function">log<
     
     <summary type="html">
     
-      &lt;h3 id=&quot;For-loop&quot;&gt;&lt;a href=&quot;#For-loop&quot; class=&quot;headerlink&quot; title=&quot;For loop&quot;&gt;&lt;/a&gt;For loop&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;for (let i = 0; i &amp;lt; Things.length; i++) {
-  Things[i]
-}
+      &lt;h3 id=&quot;For-loop&quot;&gt;&lt;a href=&quot;#For-loop&quot; class=&quot;headerlink&quot; title=&quot;For loop&quot;&gt;&lt;/a&gt;For loop&lt;/h3&gt;&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; Things&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Things&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;The performance may be slow as the length property of Things will be accessed on each loop iteration.&lt;/p&gt;
 &lt;p&gt;A better way is to cache the length at initial phase, so we just access the length property once during the whole loop.&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;for (let i = 0. len = Things.length; i &amp;lt; len; i++) {
-  Things[i]
-}
+&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt; len &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Things&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt; len&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;++&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Things&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;p&gt;further micro-optimization:&lt;/p&gt;
 &lt;p&gt;cut the extra variable but reverse loop order&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;for (let i = Things.length; i--;) {
-  Things[i]
-}
+&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;for&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; i &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; Things&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; i&lt;span class=&quot;token operator&quot;&gt;--&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  Things&lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;i&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
@@ -1431,35 +1431,35 @@ params <span class="token operator">=</span><span class="token operator">></span
       &lt;p&gt;和其他编程语言类似，JavaScript的函数也是用{}包裹的一个代码块，通过函数调用执行其方法体，能够进行值传参，并具有返回值，当没有显式声明返回值时，函数返回undefined。&lt;/p&gt;
 &lt;h3 id=&quot;1-函数是第一类对象&quot;&gt;&lt;a href=&quot;#1-函数是第一类对象&quot; class=&quot;headerlink&quot; title=&quot;1. 函数是第一类对象&quot;&gt;&lt;/a&gt;1. 函数是第一类对象&lt;/h3&gt;&lt;p&gt;JS中的函数是一种对象类型，即是说可以当作对象来使用函数，相比其他对象类型，函数多了能被调用执行的功能。&lt;/p&gt;
 &lt;p&gt;函数和其他对象的使用对比：&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;// 赋值声明
-var obj = {};
-var func = function() {};
+&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 赋值声明&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; obj &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; func &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-// 可添加属性
-obj.name = &amp;#39;Test&amp;#39;;
-func.name = &amp;#39;Test&amp;#39;;
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 可添加属性&lt;/span&gt;
+obj&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+func&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;name &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;Test&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-// 作为数组元素或对象属性值
-var testArr = [];
-testArr.push({});
-testArr.push(function() {});
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 作为数组元素或对象属性值&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; testArr &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+testArr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+testArr&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;push&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-var testObj = {};
-testObj.item1 = {};
-testObj.item2 = function() {};
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; testObj &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+testObj&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;item1 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+testObj&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;item2 &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-// 作为函数参数
-function testFunc1(arg) {};
-testFunc1({});
-testFunc1(function() {});
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 作为函数参数&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;testFunc1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;arg&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;testFunc1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;testFunc1&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 
-// 作为函数返回值
-function testFunc2() {
-  return {}
-};
-function testFunc3() {
-  return function() {}
-};
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 作为函数返回值&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;testFunc2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;testFunc3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
@@ -1671,27 +1671,27 @@ words<span class="token punctuation">.</span><span class="token function">forEac
 &lt;p&gt;&lt;code&gt;var arr2 = [ &amp;quot;hello&amp;quot;, &amp;quot;world&amp;quot; ];&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;// 数组类型判断（若Array的toString方法被重写，则不适用）：
-function isArray(obj){
-    return Object.prototype.toString.call(obj) === &amp;#39;[object Array]&amp;#39;;
-}
+&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 数组类型判断（若Array的toString方法被重写，则不适用）：&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;isArray&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;obj&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;token keyword&quot;&gt;return&lt;/span&gt; Object&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;prototype&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;toString&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;call&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;obj&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&#39;[object Array]&#39;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token punctuation&quot;&gt;}&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
-&lt;h3 id=&quot;2-常用属性和方法&quot;&gt;&lt;a href=&quot;#2-常用属性和方法&quot; class=&quot;headerlink&quot; title=&quot;2. 常用属性和方法&quot;&gt;&lt;/a&gt;2. 常用属性和方法&lt;/h3&gt;&lt;h4 id=&quot;2-1-length&quot;&gt;&lt;a href=&quot;#2-1-length&quot; class=&quot;headerlink&quot; title=&quot;2.1 .length&quot;&gt;&lt;/a&gt;2.1 .length&lt;/h4&gt;&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;// Length of an array
-var myArray = [ &amp;quot;hello&amp;quot;, &amp;quot;world&amp;quot;, &amp;quot;!&amp;quot; ];
-console.log( myArray.length ); // 3
-// Empty array
-myArray.length = 0;
-console.log( myArray ); // myArray =&amp;gt; []
-// truncate array
-myArray.length = 2;
-console.log( myArray ); // myArray =&amp;gt; [ &amp;quot;hello&amp;quot;, &amp;quot;world&amp;quot;]
-myArray.length = 4;
-console.log( myArray ); // myArray =&amp;gt; [ &amp;quot;hello&amp;quot;, &amp;quot;world&amp;quot;, &amp;quot;!&amp;quot;, undefined]
+&lt;h3 id=&quot;2-常用属性和方法&quot;&gt;&lt;a href=&quot;#2-常用属性和方法&quot; class=&quot;headerlink&quot; title=&quot;2. 常用属性和方法&quot;&gt;&lt;/a&gt;2. 常用属性和方法&lt;/h3&gt;&lt;h4 id=&quot;2-1-length&quot;&gt;&lt;a href=&quot;#2-1-length&quot; class=&quot;headerlink&quot; title=&quot;2.1 .length&quot;&gt;&lt;/a&gt;2.1 .length&lt;/h4&gt;&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// Length of an array&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; myArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;hello&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;world&quot;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token string&quot;&gt;&quot;!&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; myArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// 3&lt;/span&gt;
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// Empty array&lt;/span&gt;
+myArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; myArray &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// myArray =&gt; []&lt;/span&gt;
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// truncate array&lt;/span&gt;
+myArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; myArray &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// myArray =&gt; [ &quot;hello&quot;, &quot;world&quot;]&lt;/span&gt;
+myArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;length &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+console&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; myArray &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// myArray =&gt; [ &quot;hello&quot;, &quot;world&quot;, &quot;!&quot;, undefined]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
 &lt;h4 id=&quot;2-2-concat&quot;&gt;&lt;a href=&quot;#2-2-concat&quot; class=&quot;headerlink&quot; title=&quot;2.2 .concat()&quot;&gt;&lt;/a&gt;2.2 .concat()&lt;/h4&gt;&lt;p&gt;连接两个数组&lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;javascript&quot;&gt;var myArray = [ 2, 3, 4 ];
-var myOtherArray = [ 5, 6, 7 ];
-var wholeArray = myArray.concat( myOtherArray ); // [ 2, 3, 4, 5, 6, 7 ]
+&lt;pre class=&quot; language-javascript&quot;&gt;&lt;code class=&quot;language-javascript&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; myArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;4&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; myOtherArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;7&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;]&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; wholeArray &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; myArray&lt;span class=&quot;token punctuation&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;token function&quot;&gt;concat&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt; myOtherArray &lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;;&lt;/span&gt; &lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;// [ 2, 3, 4, 5, 6, 7 ]&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
@@ -1857,12 +1857,12 @@ var wholeArray = myArray.concat( myOtherArray ); // [ 2, 3, 4, 5, 6, 7 ]
     
     <summary type="html">
     
-      &lt;h3 id=&quot;初始状态&quot;&gt;&lt;a href=&quot;#初始状态&quot; class=&quot;headerlink&quot; title=&quot;初始状态&quot;&gt;&lt;/a&gt;初始状态&lt;/h3&gt;&lt;pre&gt;&lt;code class=&quot;html&quot;&gt;&amp;lt;!-- html --&amp;gt;
-&amp;lt;div class=&amp;quot;bgimg&amp;quot;&amp;gt;
-  &amp;lt;div class=&amp;quot;blur&amp;quot;&amp;gt;模糊效果测试&amp;lt;/div&amp;gt;
-&amp;lt;/div&amp;gt;
+      &lt;h3 id=&quot;初始状态&quot;&gt;&lt;a href=&quot;#初始状态&quot; class=&quot;headerlink&quot; title=&quot;初始状态&quot;&gt;&lt;/a&gt;初始状态&lt;/h3&gt;&lt;pre class=&quot; language-html&quot;&gt;&lt;code class=&quot;language-html&quot;&gt;&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;&amp;lt;!-- html --&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;bgimg&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+  &lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;&lt;/span&gt;div&lt;/span&gt; &lt;span class=&quot;token attr-name&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;token attr-value&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;blur&lt;span class=&quot;token punctuation&quot;&gt;&quot;&lt;/span&gt;&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;模糊效果测试&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
+&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token tag&quot;&gt;&lt;span class=&quot;token punctuation&quot;&gt;&amp;lt;/&lt;/span&gt;div&lt;/span&gt;&lt;span class=&quot;token punctuation&quot;&gt;&gt;&lt;/span&gt;&lt;/span&gt;
 
-&amp;lt;!-- css --&amp;gt;
+&lt;span class=&quot;token comment&quot; spellcheck=&quot;true&quot;&gt;&amp;lt;!-- css --&gt;&lt;/span&gt;
 .bgimg{
     height: 500px;
     background-image: url(bgpic6.jpg);
@@ -2174,9 +2174,9 @@ myVariable <span class="token operator">=</span> <span class="token number">50</
 &lt;p&gt;关于Array和Dictionary:&lt;br&gt;不同于obj-C的NSAaary和NSDictionary，Swift的Array和Dictionary是基本类型而不是对象，但两者在大部分情况下是可直接互换的&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;&lt;strong&gt;声明方式&lt;/strong&gt;&lt;br&gt;使用let来声明常量，使用var来声明变量。  &lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;swift&quot;&gt;var myVariable = 42
-myVariable = 50
-let myConstant = 42
+&lt;pre class=&quot; language-swift&quot;&gt;&lt;code class=&quot;language-swift&quot;&gt;&lt;span class=&quot;token keyword&quot;&gt;var&lt;/span&gt; myVariable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;42&lt;/span&gt;
+myVariable &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;50&lt;/span&gt;
+&lt;span class=&quot;token keyword&quot;&gt;let&lt;/span&gt; myConstant &lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;token number&quot;&gt;42&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;
     
     </summary>
@@ -2205,9 +2205,9 @@ let myConstant = 42
 <pre class=" language-Swift"><code class="language-Swift">func addObserver(_ anObserver: NSObject, //指定观察者对象
            forKeyPath keyPath: String, //指定要监听的属性
               options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据
-              context context: UnsafeMutablePointer<Void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
+              context context: UnsafeMutablePointer<void> //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
 )
-</code></pre>
+</void></code></pre>
 <a id="more"></a>
 <p>其中options参数类型NSKeyValueObservingOptions是一个结构体，包含四个属性。<br>定义： </p>
 <pre class=" language-Swift"><code class="language-Swift">struct NSKeyValueObservingOptions : RawOptionSetType {
@@ -2223,16 +2223,16 @@ let myConstant = 42
 <pre class=" language-Swift"><code class="language-Swift">func observeValueForKeyPath(_ keyPath: String,
                       ofObject object: AnyObject,
                         change change: [NSObject : AnyObject],
-                      context context: UnsafeMutablePointer<Void>)
-</code></pre>
+                      context context: UnsafeMutablePointer<void>)
+</void></code></pre>
 <p>观察者被释放前需要取消监听，否则消息发送给一个已销毁的对象会造成程序崩溃<br>方法声明：  </p>
 <pre class=" language-Swift"><code class="language-Swift">func removeObserver(_ anObserver: NSObject,
               forKeyPath keyPath: String)
 
 func removeObserver(_ observer: NSObject,
             forKeyPath keyPath: String,
-               context context: UnsafeMutablePointer<Void>)
-</code></pre>
+               context context: UnsafeMutablePointer<void>)
+</void></code></pre>
 <p>示例：当用户点击“Like”按钮，label的数字会相应加1，相当于一个点赞计数的功能  </p>
 <pre class=" language-Swift"><code class="language-Swift">import UIKit
 
@@ -2282,7 +2282,7 @@ class ViewController: UIViewController {
         like.count++
     }
 
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<void>) {
         if let label = (view.viewWithTag(1) as? UILabel) {
             label.text = "\(like.count)"
         }
@@ -2293,7 +2293,7 @@ class ViewController: UIViewController {
     }
 
 }
-</code></pre>
+</void></code></pre>
 ]]></content>
     
     <summary type="html">
@@ -2303,12 +2303,12 @@ class ViewController: UIViewController {
 &lt;p&gt;注：被监听属性要用dynamic关键字修饰&lt;/p&gt;
 &lt;/blockquote&gt;
 &lt;p&gt;方法声明： &lt;/p&gt;
-&lt;pre&gt;&lt;code class=&quot;Swift&quot;&gt;func addObserver(_ anObserver: NSObject, //指定观察者对象
+&lt;pre class=&quot; language-Swift&quot;&gt;&lt;code class=&quot;language-Swift&quot;&gt;func addObserver(_ anObserver: NSObject, //指定观察者对象
            forKeyPath keyPath: String, //指定要监听的属性
               options options: NSKeyValueObservingOptions, //监听选项，指定要包含在change字典里的数据
-              context context: UnsafeMutablePointer&amp;lt;Void&amp;gt; //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
+              context context: UnsafeMutablePointer&lt;void&gt; //要传递给观察者的数据，可以注册多个相同观察者，相同属性，不同context的监听事件
 )
-&lt;/code&gt;&lt;/pre&gt;
+&lt;/void&gt;&lt;/code&gt;&lt;/pre&gt;
     
     </summary>
     
