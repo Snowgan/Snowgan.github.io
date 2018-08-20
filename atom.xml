@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://snowgan.com/"/>
-  <updated>2018-06-28T17:28:49.332Z</updated>
+  <updated>2018-08-20T15:10:54.555Z</updated>
   <id>http://snowgan.com/</id>
   
   <author>
@@ -14,6 +14,78 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Create MongoDB Connection Pool</title>
+    <link href="http://snowgan.com/2018/03/17/Create%20MongoDB%20Connection%20Pool/"/>
+    <id>http://snowgan.com/2018/03/17/Create MongoDB Connection Pool/</id>
+    <published>2018-03-17T14:00:00.000Z</published>
+    <updated>2018-08-20T15:10:54.555Z</updated>
+    
+    <content type="html"><![CDATA[<p>MongoDB Node.js Driver support connection pool handling by default. It is responsible for initialing the pool and growing/shrinking pool connections when executing operations.</p>
+<p>Using connection pool, we just spend some time on the db connection at first time and the following CRUD operations will use the single pool to connect to Mongodb.</p>
+<p>And we can simply set the maximum pool size by pass option <code>{ poolSize: 20 }</code>.</p>
+<p>To use the single pool instance, I need to refactor the original connection.js file which return a new connection promise everytime imported.</p>
+<a id="more"></a>
+<p>Original connection.js file:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MongoClient <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongodb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MongoClient<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'mongodb://mongo-root:mongo-pass@localhost:27017/?authSource=admin'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> connection <span class="token operator">=</span> MongoClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> connection<span class="token punctuation">;</span>
+</code></pre>
+<p>Singleton pattern can help to create a single pool instance. Below is the refactored connection.js file:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MongoClient <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongodb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MongoClient<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'mongodb://mongo-root:mongo-pass@localhost:27017/?authSource=admin'</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// single pool instance</span>
+<span class="token keyword">let</span> Mongo_Client <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Mongo_Client <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Mongo_Client <span class="token operator">=</span> MongoClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// config the maximum pool size</span>
+      poolSize<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> Mongo_Client<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> connect<span class="token punctuation">;</span>
+</code></pre>
+<p>connection.js file exports a function which will return a new connection promise at first time, and then always return this promise. So the usage like below:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> ConnectDB <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./db/connection.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">ConnectDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>client <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> db <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span>dbName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// CRUD operation</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;MongoDB Node.js Driver support connection pool handling by default. It is responsible for initialing the pool and growing/shrinking pool connections when executing operations.&lt;/p&gt;
+&lt;p&gt;Using connection pool, we just spend some time on the db connection at first time and the following CRUD operations will use the single pool to connect to Mongodb.&lt;/p&gt;
+&lt;p&gt;And we can simply set the maximum pool size by pass option &lt;code&gt;{ poolSize: 20 }&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;To use the single pool instance, I need to refactor the original connection.js file which return a new connection promise everytime imported.&lt;/p&gt;
+    
+    </summary>
+    
+      <category term="Database" scheme="http://snowgan.com/categories/Database/"/>
+    
+      <category term="MongoDB" scheme="http://snowgan.com/categories/Database/MongoDB/"/>
+    
+    
+      <category term="MongoDB" scheme="http://snowgan.com/tags/MongoDB/"/>
+    
+      <category term="Connection" scheme="http://snowgan.com/tags/Connection/"/>
+    
+  </entry>
   
   <entry>
     <title>Using MongoDB Node.js Driver (1)</title>

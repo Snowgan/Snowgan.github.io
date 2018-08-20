@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="zh-cn"><head><meta charset="utf-8"><meta name="X-UA-Compatible" content="IE=edge"><title> Create MongoDB Connection Pool · Snowgan</title><meta name="description" content="Create MongoDB Connection Pool - Snowgan"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="short icon" href="/favicons2.png"><link rel="stylesheet" href="/css/apollo.css"><link rel="search" type="application/opensearchdescription+xml" href="http://snowgan.com/atom.xml" title="Snowgan"><link rel="stylesheet" href="/css/prism-tomorrow.css" type="text/css"></head><body><div class="wrap"><header><h1 class="blog-title">Snowgan</h1><ul class="nav nav-list"><li class="nav-list-item"><a href="/" target="_self" class="nav-list-link">首页</a></li><li class="nav-list-item"><a href="/categories/" target="_self" class="nav-list-link">分类</a></li><li class="nav-list-item"><a href="/archives/" target="_self" class="nav-list-link">归档</a></li><li class="nav-list-item"><a href="/about/" target="_self" class="nav-list-link">关于我</a></li></ul></header><section class="container"><div class="post"><div class="bread-crumb">/<a href="/categories/Database/" class="bread-crumb-item">Database</a>/<a href="/categories/Database/MongoDB/" class="bread-crumb-item">MongoDB</a></div><article class="post-block"><h1 class="post-title">Create MongoDB Connection Pool</h1><div class="post-info">Mar 17, 2018<span class="tags-info"><a href="/tags/MongoDB/" class="tag-link">MongoDB</a><a href="/tags/Connection/" class="tag-link">Connection</a></span></div><div class="post-content"><p>MongoDB Node.js Driver support connection pool handling by default. It is responsible for initialing the pool and growing/shrinking pool connections when executing operations.</p>
+<p>Using connection pool, we just spend some time on the db connection at first time and the following CRUD operations will use the single pool to connect to Mongodb.</p>
+<p>And we can simply set the maximum pool size by pass option <code>{ poolSize: 20 }</code>.</p>
+<p>To use the single pool instance, I need to refactor the original connection.js file which return a new connection promise everytime imported.</p>
+<a id="more"></a>
+<p>Original connection.js file:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MongoClient <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongodb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MongoClient<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'mongodb://mongo-root:mongo-pass@localhost:27017/?authSource=admin'</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> connection <span class="token operator">=</span> MongoClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> connection<span class="token punctuation">;</span>
+</code></pre>
+<p>Singleton pattern can help to create a single pool instance. Below is the refactored connection.js file:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> MongoClient <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'mongodb'</span><span class="token punctuation">)</span><span class="token punctuation">.</span>MongoClient<span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> url <span class="token operator">=</span> <span class="token string">'mongodb://mongo-root:mongo-pass@localhost:27017/?authSource=admin'</span><span class="token punctuation">;</span>
+
+<span class="token comment" spellcheck="true">// single pool instance</span>
+<span class="token keyword">let</span> Mongo_Client <span class="token operator">=</span> <span class="token keyword">null</span><span class="token punctuation">;</span>
+
+<span class="token keyword">function</span> <span class="token function">connect</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>Mongo_Client <span class="token operator">===</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    Mongo_Client <span class="token operator">=</span> MongoClient<span class="token punctuation">.</span><span class="token function">connect</span><span class="token punctuation">(</span>url<span class="token punctuation">,</span> <span class="token punctuation">{</span>
+      <span class="token comment" spellcheck="true">// config the maximum pool size</span>
+      poolSize<span class="token punctuation">:</span> <span class="token number">20</span><span class="token punctuation">,</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+  <span class="token keyword">return</span> Mongo_Client<span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+
+module<span class="token punctuation">.</span>exports <span class="token operator">=</span> connect<span class="token punctuation">;</span>
+</code></pre>
+<p>connection.js file exports a function which will return a new connection promise at first time, and then always return this promise. So the usage like below:</p>
+<pre class=" language-javascript"><code class="language-javascript"><span class="token keyword">const</span> ConnectDB <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">'./db/connection.js'</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token function">ConnectDB</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>client <span class="token operator">=</span><span class="token operator">></span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> db <span class="token operator">=</span> client<span class="token punctuation">.</span><span class="token function">db</span><span class="token punctuation">(</span>dbName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token comment" spellcheck="true">// CRUD operation</span>
+  <span class="token comment" spellcheck="true">// ...</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span>
+</code></pre>
+</div></article></div></section><footer><div class="paginator"><a href="/2018/03/02/Using MongoDB Node.js Driver 1/" class="next">NEXT: Using MongoDB Node.js Driver (1)>></a></div><div id="disqus_thread"></div><script>var disqus_config = function () {
+    this.page.url = 'http://snowgan.com/2018/03/17/Create MongoDB Connection Pool/';
+    this.page.identifier = '2018/03/17/Create MongoDB Connection Pool/';
+};
+(function() {
+    var d = document, s = d.createElement('script');
+    s.src = '//' + 'snowgan' + '.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+})();</script><script id="dsq-count-scr" src="//snowgan.disqus.com/count.js" async></script><noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript><div class="copyright"><p>© 2015 - 2018 <a href="http://snowgan.com">Snowgan</a>, powered by <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/pinggod/hexo-theme-apollo" target="_blank">hexo-theme-apollo</a>.</p></div></footer></div><script>(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','https://www.google-analytics.com/analytics.js','ga');ga('create', 'UA-90028164-1', 'auto');ga('send', 'pageview');</script></body></html>
